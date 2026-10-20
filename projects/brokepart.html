@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BrokePart — Maximilian Purcea</title>
-  <meta name="description" content="An in-progress app that helps anyone identify a broken or missing part from a photo and get it fixed, replaced, or 3D printed.">
+  <title>BrokePart | Maximilian Purcea</title>
+  <meta name="description" content="Mobile application that identifies broken or missing components from a photograph and provides repair or replacement options.">
   <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <script>document.documentElement.classList.remove('no-js');</script>
 </head>
@@ -21,11 +21,11 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="../index.html#about">About</a></li>
       <li><a href="../index.html#projects">Projects</a></li>
       <li><a href="../index.html#rowing">Rowing</a></li>
+      <li><a href="../index.html#about">About</a></li>
       <li><a href="../index.html#resume">Resume</a></li>
-      <li><a class="cta" href="../index.html#contact">Contact</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
     </ul>
   </nav>
 </header>
@@ -34,13 +34,13 @@
   <a class="back" href="../index.html#projects">← All projects</a>
 
   <section class="case-hero">
-    <span class="eyebrow">Personal project · App · In progress</span>
-    <h1>BrokePart: from "it's broken" to fixed</h1>
-    <p class="lede">When a tool or appliance breaks, the hard part is often figuring out <em>which</em> part failed and what it's called. BrokePart is a phone app that helps an everyday person identify a broken, faulty, or missing part from a photo and get the thing working again, whether by a DIY fix, a reliable replacement part, or a custom 3D-printed one.</p>
+    <span class="eyebrow">Independent project · Mobile application</span>
+    <h1>BrokePart</h1>
+    <p class="lede">A mobile application intended to help users identify a broken, faulty, or missing component of a tool or appliance from a photograph, and restore it to working order through repair instructions, replacement-part sourcing, or a custom 3D-printed part.</p>
     <div class="case-meta">
-      <div><span class="mono">Status</span><span>Early stage: building v1</span></div>
-      <div><span class="mono">Platform</span><span>iPhone + Android (Expo)</span></div>
-      <div><span class="mono">My role</span><span>Founder, product &amp; engineering</span></div>
+      <div><span class="mono">Status</span><span>Development of first version</span></div>
+      <div><span class="mono">Platform</span><span>iOS and Android (Expo)</span></div>
+      <div><span class="mono">Role</span><span>Product design and development</span></div>
       <div><span class="mono">Started</span><span>2026</span></div>
     </div>
   </section>
@@ -50,53 +50,56 @@
       <span class="mono">On this page</span>
       <ol>
         <li><a href="#flow">User flow</a></li>
-        <li><a href="#decisions">Decisions so far</a></li>
-        <li><a href="#next">Next</a></li>
+        <li><a href="#decisions">Design decisions</a></li>
+        <li><a href="#next">Next steps</a></li>
       </ol>
     </aside>
     <article class="prose">
-      <div class="callout wip">
-        <span class="mono">● Early stage · updated Oct 2026</span>
-        <p>Being built now. I'll add screenshots and a demo once the first version works end to end.</p>
-      </div>
 
       <h2 id="flow">User flow</h2>
       <ol class="steps">
-        <li><strong>Capture:</strong> a photo and a short description of what's wrong.</li>
-        <li><strong>Diagnose:</strong> identify the system and the likely broken, faulty, or missing part.</li>
-        <li><strong>Fix it yourself</strong> when that's realistic, with clear step-by-step instructions.</li>
-        <li><strong>Otherwise, source it:</strong> affordable, reliable part options, with the reasoning behind each pick.</li>
-        <li><strong>Special cases, make it:</strong> when no part exists, a CAD and 3D-print request for a custom replacement.</li>
-        <li><strong>Install and operate:</strong> a guide to fit the part and get back to normal use.</li>
+        <li><strong>Input:</strong> the user submits a photograph and a short description of the problem.</li>
+        <li><strong>Diagnosis:</strong> the application identifies the system and the likely broken, faulty, or missing component.</li>
+        <li><strong>Repair:</strong> where practical, step-by-step repair instructions are provided.</li>
+        <li><strong>Sourcing:</strong> otherwise, affordable and reliable replacement parts are listed with the reasoning for each.</li>
+        <li><strong>Fabrication:</strong> where no replacement exists, the user can request a CAD model and 3D-printed part.</li>
+        <li><strong>Installation:</strong> instructions for fitting the part and returning the item to normal use.</li>
       </ol>
 
-      <h2 id="decisions">Decisions so far</h2>
+      <h2 id="decisions">Design decisions</h2>
       <ul>
-        <li><strong>Expo / React Native</strong> for the first version, so one codebase ships to both iPhone and Android.</li>
-        <li>Built around the <strong>everyday user</strong>, not the repair pro. Plain language, and as few steps as possible between the photo and a fix.</li>
-        <li>The CAD and 3D-print path connects the app to my own engineering work. It's the case where a missing part gets designed, not bought.</li>
+        <li>Expo (React Native) was selected for the first version so that one codebase supports both iOS and Android.</li>
+        <li>The application is designed for non-specialist users, with plain-language instructions and a minimal number of steps.</li>
       </ul>
 
-      <h2 id="next">Next</h2>
-      <!-- EDIT ME: update as you ship -->
+      <h2 id="next">Next steps</h2>
+      <!-- EDIT ME: update as development progresses -->
       <ul>
-        <li>Get the photo → diagnosis loop working end to end.</li>
-        <li>Test with friends on real broken items, and track how often the diagnosis is right.</li>
-        <li>Add part sourcing, and a simple request form for custom prints.</li>
+        <li>Complete the photograph-to-diagnosis workflow.</li>
+        <li>Test with real broken items and measure diagnostic accuracy.</li>
+        <li>Add part sourcing and a request form for custom printed parts.</li>
       </ul>
     </article>
   </div>
 
   <nav class="next-prev" aria-label="More projects">
-    <a href="bike-travel-case.html"><span class="mono">← In progress</span><b>Ultralight Bike Travel Case</b></a>
-    <a href="rim-aerodynamics.html"><span class="mono">Featured →</span><b>Parametric Rim Aerodynamics</b></a>
+    <a href="bike-travel-case.html"><span class="mono">← Previous</span><b>Ultralight Bicycle Travel Case</b></a>
+    <a href="rim-aerodynamics.html"><span class="mono">Next →</span><b>Parametric Rim Aerodynamics</b></a>
   </nav>
 </main>
 
 <footer class="site-footer">
   <div class="container">
-    <span>© <span id="yr">2026</span> Maximilian Purcea</span>
-    <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle dark mode">◐ Theme</button>
+    <div class="footer-contact">
+      <span class="mono">Contact</span>
+      <a href="mailto:mp2284@cornell.edu">mp2284@cornell.edu</a>
+      <span class="sep" aria-hidden="true">·</span>
+      <a href="tel:+19142297125">(914) 229-7125</a>
+    </div>
+    <div class="footer-meta">
+      <span>© <span id="yr">2026</span> Maximilian Purcea</span>
+      <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle dark mode">◐ Theme</button>
+    </div>
   </div>
 </footer>
 <script src="../js/main.js"></script>

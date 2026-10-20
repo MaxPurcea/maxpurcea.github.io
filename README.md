@@ -7,12 +7,10 @@ site/
 ├── index.html                 Home: hero, about, projects, rowing, resume, contact
 ├── projects/                  One page per project
 │   ├── rim-aerodynamics.html
-│   ├── concrete-canoe.html    (includes the 2026–27 "in progress" section)
+│   ├── concrete-canoe.html    (both seasons)
 │   ├── drawings-and-hangers.html
-│   ├── tt-stack.html
-│   ├── bom-tool.html
-│   ├── bike-travel-case.html  (in progress)
-│   └── brokepart.html         (in progress)
+│   ├── bike-travel-case.html 
+│   └── brokepart.html        
 ├── css/style.css              All styling; colors are at the top in :root
 ├── js/main.js                 Mobile menu, scroll reveal, dark-mode toggle
 ├── img/                       Optimized photos (JPG, max ~2000px wide)
@@ -58,7 +56,6 @@ DNS can take anywhere from a few minutes to a few hours. Once it works, go back 
 | `index.html` → Rowing table | Add regattas, boats, placings, and the **year/event/place** for the Head of the Charles medal. Delete the italic placeholder rows. |
 | `index.html` → erg boxes | 2k / 6k times and seat, or delete the `<div class="erg">` block. |
 | `projects/concrete-canoe.html` | Swap the Fusion screenshot in "2026–27" for an ANSYS Fluent plot when you have one. |
-| `projects/bom-tool.html` | Add how often it runs and how much time it saves, if you know. |
 | `projects/bike-travel-case.html`, `brokepart.html` | Update the status and next steps as you go. Add CAD renders and screenshots. |
 | `index.html` → contact text | Change "Summer 2027" if you're targeting a different term. |
 
