@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ARGO Hot-Wire Foam Mold — Maximilian Purcea</title>
+  <meta name="description" content="Building Cornell Concrete Canoe's 21-ft tumblehome mold in-house with a hot-wire foam cutter, and this season's hull CFD.">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Primary">
+    <a class="brand" href="../index.html"><span class="brand-mark">MP</span><span>Maximilian Purcea</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#rowing">Rowing</a></li>
+      <li><a href="../index.html#resume">Resume</a></li>
+      <li><a class="cta" href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="container">
+  <a class="back" href="../index.html#projects">← All projects</a>
+
+  <section class="case-hero">
+    <span class="eyebrow">Cornell Concrete Canoe · 2025–26 season</span>
+    <h1>ARGO: cutting a 21-ft canoe mold in-house with a hot wire</h1>
+    <p class="lede">For the 2026 ASCE competition our team switched to a wide, tumblehome hull, and stopped outsourcing the mold. On the mold sub-team I helped turn the CAD hull into a foam mold with a homemade hot-wire cutter, designed it to come apart after casting, and helped cast and demold the boat.</p>
+    <div class="case-meta">
+      <div><span class="mono">Role</span><span>Mold Sub-Team Engineer</span></div>
+      <div><span class="mono">Timeline</span><span>Sep 2025 – Apr 2026</span></div>
+      <div><span class="mono">Tools</span><span>Fusion 360, laser cutter, hot-wire cutter, ANSYS</span></div>
+      <div><span class="mono">Team</span><span>Four sub-teams: mold, mix, aesthetics, business</span></div>
+    </div>
+  </section>
+
+  <figure class="case-cover">
+    <img src="../img/canoe-race-closeup.jpg" alt="ARGO, Cornell's concrete canoe, racing at the 2026 competition" width="1800" height="1199">
+    <figcaption>ARGO on race day at the 2026 ASCE Upstate NY Symposium.</figcaption>
+  </figure>
+
+  <div class="case-body">
+    <aside class="toc" aria-label="On this page">
+      <span class="mono">On this page</span>
+      <ol>
+        <li><a href="#challenge">Challenge</a></li>
+        <li><a href="#process">Mold process</a></li>
+        <li><a href="#core-four">Designing for demolding</a></li>
+        <li><a href="#cast">Cast day</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#season-2026-27">2026–27: in progress</a></li>
+      </ol>
+    </aside>
+
+    <article class="prose">
+      <h2 id="challenge">Challenge</h2>
+      <p>ARGO's <strong>tumblehome</strong> hull curves inward above the waterline. That lets paddlers take more vertical strokes and makes the boat more stable, but it creates a molding problem: the bottom of the boat is wider than the gunwales. In past years, concrete shrank onto the mold during curing and the mold had to be destroyed to get the boat out. This boat was also bigger than any before it. On top of that, the team wanted to stop paying an outside shop to CNC the foam.</p>
+
+      <div class="kpis">
+        <div class="kpi"><b>252 in</b><span>Final canoe length</span></div>
+        <div class="kpi"><b>32 in</b><span>Max beam (tumblehome)</span></div>
+        <div class="kpi"><b>5/8 in</b><span>Hull wall thickness</span></div>
+      </div>
+
+      <h2 id="process">Mold process</h2>
+      <ol class="steps">
+        <li><strong>Slice the CAD.</strong> We took hull cross-sections from Fusion 360 every 12 in. Each one kept its offset from the gunwale line to the stern axis, so we could cast directly on the mold without shimming it.</li>
+        <li><strong>Add the wall.</strong> We added a 5/8 in edge from the gunwale to that axis on every section. It doubles as a thickness guide at the edges.</li>
+        <li><strong>Laser-cut templates.</strong> We cut each section from 1/4 in plywood, which is stiff enough that the hot wire doesn't burn straight through it.</li>
+        <li><strong>Stack and cut.</strong> We glued insulation-foam boards into 12 in blocks, fixed a template to each face, and traced both outlines with the hot wire. Each block becomes a loft between two stations.</li>
+        <li><strong>End caps.</strong> We rough-cut the 32 in end caps from Styrofoam with the hot wire, then hand-sanded them to shape. The end caps stay in the boat after casting.</li>
+        <li><strong>Assemble.</strong> We pinned each section to the casting table with two diagonal dowels in custom 3D-printed holders, filled the gaps with spray foam, sanded the transitions smooth, and wrapped the mold in a stretchy fabric release layer.</li>
+      </ol>
+
+      <div class="gallery">
+        <figure><img src="../img/canoe-foamblock.jpg" alt="Foam block with a plywood cross-section template taped to its face" loading="lazy"><figcaption>A 12 in foam block with its plywood template, ready for the hot wire.</figcaption></figure>
+        <figure><img src="../img/canoe-templates.jpg" alt="Stacks of foam with laser-cut plywood templates on top" loading="lazy"><figcaption>Templates staged on glued foam stacks.</figcaption></figure>
+        <figure><img src="../img/canoe-section.jpg" alt="A finished hot-wire-cut foam mold section" loading="lazy"><figcaption>A finished section, cut by tracing both templates.</figcaption></figure>
+        <figure><img src="../img/canoe-dowel-print.jpg" alt="3D printer producing dowel holders" loading="lazy"><figcaption>3D-printed dowel holders that lock each section to the table.</figcaption></figure>
+      </div>
+
+      <figure>
+        <img src="../img/canoe-mold-tent.jpg" alt="Full foam mold assembled on the casting table with spray-foam seams and a Styrofoam end cap" loading="lazy" style="max-height:720px;object-fit:cover">
+        <figcaption>The full mold on the casting table inside the hydration tent: 15 insulation-foam sections, two connectors, and a white Styrofoam end cap in front. The spray-foam seams get sanded flush before the fabric goes on.</figcaption>
+      </figure>
+
+      <h2 id="core-four">Designing for demolding: the "Core Four"</h2>
+      <p>The four center sections have the largest overhang, so they would trap the boat. We gave each of these "Core Four" pieces an extra <strong>T-shaped cut</strong> that splits it into three parts. To demold, you pull the center T first. The two side pieces then fold inward and slide out, and the remaining sections slide toward the middle and come out one at a time. The boat came off cleanly, and most of the foam can be reused.</p>
+
+      <div class="diagram" role="img" aria-label="Diagram of a Core Four mold section split by a T-shaped cut into three removable pieces">
+        <svg viewBox="0 0 640 230">
+          <g font-family="JetBrains Mono, monospace" font-size="12" fill="var(--ink-2)">
+            <!-- section outline (tumblehome, inverted mold) -->
+            <path d="M70 200 L70 120 C70 60 110 30 160 30 L240 30 C290 30 330 60 330 120 L330 200 Z" fill="var(--bg-soft)" stroke="var(--ink)" stroke-width="2"/>
+            <path d="M175 200 V95 H125 M225 200 V95 H275" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+            <path d="M125 95 H275" stroke="var(--accent)" stroke-width="2.5"/>
+            <text x="200" y="160" text-anchor="middle" fill="var(--accent)">T</text>
+            <text x="200" y="222" text-anchor="middle">Core Four section, T-cut</text>
+            <!-- step 2 -->
+            <g transform="translate(360 0)">
+              <path d="M30 200 L30 120 C30 60 70 30 120 30 L130 30 L130 95 H85 V200 Z" fill="var(--bg-soft)" stroke="var(--ink)" stroke-width="2" transform="translate(30 0)"/>
+              <path d="M200 30 L210 30 C260 30 300 60 300 120 L300 200 L245 200 L245 95 H200 Z" fill="var(--bg-soft)" stroke="var(--ink)" stroke-width="2" transform="translate(-30 0)"/>
+              <path d="M140 200 V150" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#d)"/>
+              <path d="M100 120 l20 0" stroke="var(--ink)" stroke-width="2" marker-end="url(#d)"/>
+              <path d="M200 120 l-20 0" stroke="var(--ink)" stroke-width="2" marker-end="url(#d)"/>
+              <text x="140" y="222" text-anchor="middle">pull T, fold sides in</text>
+            </g>
+          </g>
+          <defs><marker id="d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--ink)"/></marker></defs>
+        </svg>
+      </div>
+
+      <h2 id="cast">Cast day &amp; demolding</h2>
+      <p>We cast ARGO on <strong>January 24, 2026</strong>, on schedule. The mold team hand-placed concrete as the mix team delivered about two batches every ten minutes:</p>
+      <ul>
+        <li><strong>First layer, 3/8 in:</strong> started four feet from the bow and worked in both directions. Rubber straps of known 3/8 in thickness, laid every 12 in, served as depth references.</li>
+        <li><strong>Reinforcement:</strong> SpiderLath fiberglass mesh, laid 24 in at a time with 2 in overlaps. On the overhangs, two people pushed concrete into the mold from each side.</li>
+        <li><strong>Second layer, 1/4 in:</strong> checked with marked toothpicks in every 4 in square, then floated smooth to cut down on sanding.</li>
+        <li><strong>Cure:</strong> wrapped in plastic inside the hydration tent, kept above 85% humidity for three weeks.</li>
+      </ul>
+
+      <div class="gallery">
+        <figure><img src="../img/canoe-fabric.jpg" alt="Team stretching the fabric release layer over the foam mold" loading="lazy"><figcaption>Stretching the fabric release layer over the mold.</figcaption></figure>
+        <figure><img src="../img/canoe-cast.jpg" alt="Cast canoe wrapped in plastic in the hydration tent" loading="lazy"><figcaption>Cast and wrapped for curing.</figcaption></figure>
+      </div>
+
+      <h2 id="results">Results</h2>
+      <div class="callout">
+        <span class="mono">Outcome</span>
+        <p>The in-house hot-wire process took about <strong>three fewer weeks</strong> and <strong>several thousand fewer dollars</strong> than outsourcing CNC work, and every new mold member learned CAD along the way. The hot wire was a little less precise than a CNC machine, so we made up the difference by hand-sanding to shape. The Core Four design let us <strong>demold without destroying the mold</strong>, which had not been possible on previous boats.</p>
+      </div>
+      <ul>
+        <li>Our analysis predicted a four-paddler midship freeboard of about 7.3 in, comfortably above the 6 in minimum. The FEA run agreed closely.</li>
+        <li>We competed at the 2026 ASCE Upstate NY Student Symposium at RIT (April 9–11).</li>
+      </ul>
+
+      <div class="gallery">
+        <figure><img src="../img/canoe-display.jpg" alt="ARGO on display stands at the competition" loading="lazy"><figcaption>ARGO on display at competition.</figcaption></figure>
+        <figure><img src="../img/canoe-race.jpg" alt="Two paddlers racing ARGO" loading="lazy"><figcaption>Race day.</figcaption></figure>
+      </div>
+
+      <h2 id="season-2026-27">2026–27: in progress</h2>
+      <div class="callout wip">
+        <span class="mono">● In progress · updated Oct 2026</span>
+        <p>This season's work builds directly on what ARGO taught us.</p>
+      </div>
+      <ul>
+        <li><strong>Hull CFD.</strong> I'm running hull CFD in <strong>ANSYS Fluent</strong> to compare revisions of this year's ~20 ft hull before the geometry is locked.</li>
+        <li><strong>A mold that survives several pours.</strong> We're reworking the foam mold process so one mold holds up across practice casts and the final cast. That means tighter casting tolerances and less patchwork between pours.</li>
+        <li><strong>Turning constraints into geometry.</strong> I'm translating mix sub-team test results, new competition rules (including a thinner wall), and shop machining limits into specific hull and mold revisions.</li>
+        <li><strong>Better tooling.</strong> The team is building a larger, stiffer hot-wire cutter and 3D-printed depth gauges for casting.</li>
+      </ul>
+      <figure>
+        <img src="../img/canoe-cad.jpg" alt="Fusion 360 model of the canoe hull" loading="lazy" style="background:#fff">
+        <figcaption>Hull model in Fusion 360. <!-- EDIT ME: swap in an ANSYS Fluent pressure or velocity plot when you have one --></figcaption>
+      </figure>
+      <figure>
+        <img src="../img/canoe-lab.jpg" alt="Max working in the concrete canoe lab with foam sections and reinforcement mesh" loading="lazy" style="max-height:640px;object-fit:cover">
+        <figcaption>In the lab with foam sections and reinforcement mesh.</figcaption>
+      </figure>
+    </article>
+  </div>
+
+  <nav class="next-prev" aria-label="More projects">
+    <a href="rim-aerodynamics.html"><span class="mono">← Previous</span><b>Parametric Rim Aerodynamics</b></a>
+    <a href="drawings-and-hangers.html"><span class="mono">Next →</span><b>GD&amp;T Drawings &amp; Hanger Replicas</b></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© <span id="yr">2026</span> Maximilian Purcea</span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle dark mode">◐ Theme</button>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

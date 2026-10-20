@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parametric Rim Aerodynamics — Maximilian Purcea</title>
+  <meta name="description" content="Parametric CAD and yaw-weighted CFD study of 75 and 95 mm triathlon wheel rims at Princeton Carbon Works.">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Primary">
+    <a class="brand" href="../index.html"><span class="brand-mark">MP</span><span>Maximilian Purcea</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#rowing">Rowing</a></li>
+      <li><a href="../index.html#resume">Resume</a></li>
+      <li><a class="cta" href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="container">
+  <a class="back" href="../index.html#projects">← All projects</a>
+
+  <section class="case-hero">
+    <span class="eyebrow">Princeton Carbon Works · Summer 2026</span>
+    <h1>Parametric rim aerodynamics for triathlon wheels</h1>
+    <p class="lede">Deeper rims cut drag. That part is obvious. The harder question is which details of the cross-section matter once depth is fixed. I built a four-parameter rim model, ran full yaw sweeps in CFD on every candidate, and weighted the results by how long a triathlete actually spends at each yaw angle.</p>
+    <div class="case-meta">
+      <div><span class="mono">Role</span><span>Engineering Intern</span></div>
+      <div><span class="mono">Timeline</span><span>Jun – Aug 2026</span></div>
+      <div><span class="mono">Tools</span><span>SolidWorks, Fusion 360, NablaFlow AeroCloud, Python</span></div>
+      <div><span class="mono">Depths</span><span>75 mm &amp; 95 mm</span></div>
+    </div>
+  </section>
+
+  <figure class="case-cover">
+    <img src="../img/pcw-streamlines.jpg" alt="CFD streamlines wrapping around a deep-section rim and tire" width="1489" height="945">
+    <figcaption>Streamlines around a candidate rim and tire in AeroCloud. The low-pressure region aft of the tire and the trailing-edge wake show where shape changes pay off.</figcaption>
+  </figure>
+
+  <div class="case-body">
+    <aside class="toc" aria-label="On this page">
+      <span class="mono">On this page</span>
+      <ol>
+        <li><a href="#problem">Problem</a></li>
+        <li><a href="#model">Parametric model</a></li>
+        <li><a href="#method">CFD &amp; yaw weighting</a></li>
+        <li><a href="#findings">Findings</a></li>
+        <li><a href="#learned">What I learned</a></li>
+      </ol>
+    </aside>
+
+    <article class="prose">
+      <h2 id="problem">Problem</h2>
+      <p>Wheel brands usually optimize a rim shape at <strong>0° yaw</strong>, with the wind straight on. Real riders almost never see that. Crosswinds put a triathlete at a spread of yaw angles, and the shape that wins head-on is often not the one that wins over a whole race. Princeton Carbon Works wanted to know which geometric features drive drag on their deep triathlon rims, beyond the obvious answer of "go deeper."</p>
+
+      <h2 id="model">Parametric model</h2>
+      <p>My first iterations borrowed from NACA airfoil theory. I traced elliptical profiles that matched the leading and trailing edges to the tire curvature and moved max width between 30 and 50% of depth. Those early shapes mostly confirmed that narrow is aero, and they converged near the industry-standard rim width of about 105% of tire width. To get past that, I rebuilt the profile as a spline controlled by <strong>four parameters</strong>, so every candidate was a single named point in the design space:</p>
+
+      <div class="diagram" role="img" aria-label="Rim cross-section diagram showing parameters P1 through P4">
+        <svg viewBox="0 0 640 330">
+          <defs>
+            <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="var(--ink-2)"/></marker>
+          </defs>
+          <!-- tire -->
+          <circle cx="92" cy="160" r="42" fill="var(--bg-soft)" stroke="var(--ink-3)" stroke-width="2"/>
+          <text x="92" y="164" text-anchor="middle" font-size="12" fill="var(--ink-3)">tire</text>
+          <!-- rim profile -->
+          <path d="M126 136 C 160 116, 205 112, 250 112 C 330 112, 470 150, 580 160 C 470 170, 330 208, 250 208 C 205 208, 160 204, 126 184 Z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+          <!-- P3 handle (shoulder) -->
+          <line x1="250" y1="112" x2="338" y2="112" stroke="var(--ink)" stroke-width="1.5"/>
+          <circle cx="250" cy="112" r="4" fill="var(--ink)"/><circle cx="338" cy="112" r="4" fill="var(--bg-card)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text x="300" y="98" font-size="12" fill="var(--ink)">P3 · shoulder handle</text>
+          <!-- P4 handle (trailing edge) -->
+          <line x1="580" y1="160" x2="520" y2="153" stroke="var(--ink)" stroke-width="1.5"/>
+          <circle cx="580" cy="160" r="4" fill="var(--ink)"/><circle cx="520" cy="153" r="4" fill="var(--bg-card)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text x="420" y="132" font-size="12" fill="var(--ink)">P4 · trailing-edge handle</text>
+          <!-- P2 max width -->
+          <line x1="250" y1="112" x2="250" y2="208" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="232" y1="114" x2="232" y2="206" stroke="var(--ink-2)" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+          <text x="140" y="250" font-size="12" fill="var(--ink)">P2 · max width (% of tire width)</text>
+          <line x1="226" y1="238" x2="232" y2="214" stroke="var(--ink-3)" stroke-width="1"/>
+          <!-- P1 position -->
+          <line x1="128" y1="276" x2="248" y2="276" stroke="var(--ink-2)" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+          <text x="132" y="296" font-size="12" fill="var(--ink)">P1 · max-width position (% of depth)</text>
+          <!-- depth -->
+          <line x1="128" y1="40" x2="578" y2="40" stroke="var(--ink-3)" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+          <text x="353" y="32" text-anchor="middle" font-size="12" fill="var(--ink-3)">rim depth · 75 or 95 mm</text>
+          <line x1="128" y1="44" x2="128" y2="132" stroke="var(--line-strong)" stroke-dasharray="3 3"/>
+          <line x1="578" y1="44" x2="578" y2="156" stroke="var(--line-strong)" stroke-dasharray="3 3"/>
+        </svg>
+      </div>
+      <p style="margin-top:12px;font-size:14px;color:var(--ink-3)">Schematic only, not to scale. Each candidate was named by its four values, e.g. <code>P1_P2_P3_P4</code>, so results could be sorted and compared directly.</p>
+
+      <ul>
+        <li><strong>P1, max-width position:</strong> where the widest point sits along the depth.</li>
+        <li><strong>P2, max rim width:</strong> as a percentage of tire width. This sets how cleanly flow transitions from tire to rim.</li>
+        <li><strong>P3, shoulder (vertical) spline handle:</strong> how quickly the profile sheds width after its widest point.</li>
+        <li><strong>P4, trailing-edge spline handle:</strong> the shape of the convergence at the spoke bed.</li>
+      </ul>
+
+      <h2 id="method">CFD &amp; yaw weighting</h2>
+      <ol class="steps">
+        <li><strong>Model.</strong> I built each 75 and 95 mm candidate in SolidWorks and Fusion 360 from the four parameters, on a 28 mm tire.</li>
+        <li><strong>Simulate.</strong> I ran a full yaw-range sweep from 0° to 20° on every candidate in NablaFlow AeroCloud, comparing drag force at each angle.</li>
+        <li><strong>Weight.</strong> I wrote a Python script that bins drag into eight yaw bins and weights each bin by the share of race time a triathlete spends there. I computed the weighting two ways, nearest-neighbor and interpolation, to check that the result did not depend on the method.</li>
+        <li><strong>Rank.</strong> I sorted the weighted drag across folders of candidates (exploratory sets, 75 mm, 95 mm, and disc) and tracked how much each parameter moved the result.</li>
+      </ol>
+
+      <figure>
+        <img src="../img/pcw-pressure.jpg" alt="Pressure contour behind a rim cross-section" loading="lazy" width="1095" height="823">
+        <figcaption>Pressure field behind a rim section. A blunt shoulder pushes the low-pressure wake wider.</figcaption>
+      </figure>
+
+      <figure>
+        <img src="../img/pcw-wind-tunnel.jpg" alt="Time-trial bike mounted on the force balance in the A2 Wind Tunnel test section" loading="lazy" style="max-height:640px;object-fit:cover">
+        <figcaption>A bike on the force balance at the A2 Wind Tunnel. CFD narrows the field, and the tunnel is where candidates get checked on real hardware.</figcaption>
+      </figure>
+
+      <h2 id="findings">Findings</h2>
+      <div class="callout">
+        <span class="mono">Key result</span>
+        <p><strong>Max rim width (P2) was the dominant parameter, with an optimum near 115% of tire width at both depths.</strong> That is wider than the common ~105% standard. Once the shoulder geometry was tuned, the wider rim held flow attached at the tire-to-rim junction across more of the yaw range.</p>
+      </div>
+      <ul>
+        <li><strong>0° optimization is unreliable.</strong> Shapes that were fastest head-on were often not fastest after yaw weighting. High-yaw performance decided the ranking.</li>
+        <li><strong>Depth changes which parameters matter.</strong> At 75 mm, P2 led clearly. At 95 mm, the shoulder handle (P3) and max-width position (P1) together carried as much influence as width. With more chord behind the widest point, the flow needs more room to recover pressure. A designer moving to deeper rims who only tunes width will miss the biggest gains.</li>
+        <li><strong>A shorter shoulder was always better.</strong> The shortest P3 tested won at both depths, so the optimum may lie lower still. The real limit is probably manufacturing or structure, not aerodynamics.</li>
+        <li><strong>The trailing edge is "set and hold."</strong> P4 had a stable optimum that did not move with depth. Once the other three parameters are set, it barely needs revisiting.</li>
+        <li><strong>Balance beats extremes.</strong> A good pairing of side and bottom spline lengths outperformed letting either one dominate.</li>
+      </ul>
+      <p style="font-size:14px;color:var(--ink-3)">Exact drag values and candidate geometries are Princeton Carbon Works' data and are left out on purpose. I'm happy to walk through the method in an interview.</p>
+
+      <h2 id="learned">What I learned</h2>
+      <ul>
+        <li>How to design a parameter study so the results answer a question, instead of producing a pile of runs.</li>
+        <li>Why the weighting scheme matters as much as the solver. The "best" shape changed once I weighted for real conditions.</li>
+        <li>How to turn CFD output into a ranked, defensible recommendation for an engineering team.</li>
+      </ul>
+      <p><strong>Next steps I proposed:</strong> test shoulder handles shorter than the current minimum against structural limits, and add trispoke-equipped runs. No trispoke data existed yet for any candidate.</p>
+    </article>
+  </div>
+
+  <nav class="next-prev" aria-label="More projects">
+    <a href="bom-tool.html"><span class="mono">← Previous</span><b>BOM Shortage Tool</b></a>
+    <a href="concrete-canoe.html"><span class="mono">Next →</span><b>ARGO: Hot-Wire Foam Mold</b></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© <span id="yr">2026</span> Maximilian Purcea</span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle dark mode">◐ Theme</button>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

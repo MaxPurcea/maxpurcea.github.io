@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ultralight Bike Travel Case — Maximilian Purcea</title>
+  <meta name="description" content="An in-progress personal project: a contoured carbon/foam sandwich bike travel case targeting half the weight of the lightest commercial options.">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Primary">
+    <a class="brand" href="../index.html"><span class="brand-mark">MP</span><span>Maximilian Purcea</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#rowing">Rowing</a></li>
+      <li><a href="../index.html#resume">Resume</a></li>
+      <li><a class="cta" href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="container">
+  <a class="back" href="../index.html#projects">← All projects</a>
+
+  <section class="case-hero">
+    <span class="eyebrow">Personal project · In progress</span>
+    <h1>An ultralight bike travel case</h1>
+    <p class="lede">Hard bike cases protect well, but they are heavy enough to eat most of an airline's weight allowance before the bike goes in. I'm designing a case with a <strong>contoured carbon/foam sandwich shell</strong> that follows the bike's shape, with a target of <strong>about half the weight</strong> of the lightest case on the market.</p>
+    <div class="case-meta">
+      <div><span class="mono">Status</span><span>Early stage: research &amp; concept</span></div>
+      <div><span class="mono">Started</span><span>2026</span></div>
+      <div><span class="mono">Tools</span><span>Fusion 360 / SolidWorks, composites</span></div>
+      <div><span class="mono">Target</span><span>~50% of the lightest commercial case</span></div>
+    </div>
+  </section>
+
+  <div class="case-body">
+    <aside class="toc" aria-label="On this page">
+      <span class="mono">On this page</span>
+      <ol>
+        <li><a href="#idea">The idea</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#plan">Plan</a></li>
+      </ol>
+    </aside>
+    <article class="prose">
+      <div class="callout wip">
+        <span class="mono">● Early stage · updated Oct 2026</span>
+        <p>This page tracks a project that's still being worked on. I'll add CAD, layup tests, and weights as they happen.</p>
+      </div>
+
+      <h2 id="idea">The idea</h2>
+      <p>A sandwich panel, with thin carbon skins on a lightweight foam core, gets most of its bending stiffness from separating the skins, not from adding material. Shaping the shell to the bike's outline also removes the empty volume a box-shaped case carries around. Putting the two together should give a case that is stiff where it needs to be and light everywhere else.</p>
+
+      <div class="diagram" role="img" aria-label="Sandwich panel cross-section: carbon skins on a foam core">
+        <svg viewBox="0 0 640 170">
+          <g font-family="JetBrains Mono, monospace" font-size="12" fill="var(--ink-2)">
+            <rect x="60" y="40" width="360" height="12" fill="var(--ink)"/>
+            <rect x="60" y="52" width="360" height="60" fill="var(--accent-soft)" stroke="var(--accent)"/>
+            <rect x="60" y="112" width="360" height="12" fill="var(--ink)"/>
+            <text x="440" y="50">carbon skin</text>
+            <text x="440" y="86">foam core</text>
+            <text x="440" y="122">carbon skin</text>
+            <path d="M40 46V118" stroke="var(--ink-3)" stroke-width="1.5"/>
+            <text x="20" y="150">core thickness ↑ → stiffness ↑ with little added mass</text>
+          </g>
+        </svg>
+      </div>
+
+      <h2 id="requirements">Requirements (working draft)</h2>
+      <!-- EDIT ME: adjust these as the design firms up -->
+      <ul>
+        <li>Protects a road or triathlon bike through checked-baggage handling.</li>
+        <li>Total mass of about half the lightest commercial hard case.</li>
+        <li>Within standard airline oversize-baggage dimensions.</li>
+        <li>Can be built with student-accessible composites methods.</li>
+      </ul>
+
+      <h2 id="plan">Plan</h2>
+      <ol class="steps">
+        <li><strong>Benchmark</strong> the weight, dimensions, and construction of existing hard and soft cases.</li>
+        <li><strong>Choose materials:</strong> skin layups and core options, sized with sandwich-beam stiffness calculations.</li>
+        <li><strong>CAD</strong> the contoured shell around a reference bike envelope, with a parting line and hardware.</li>
+        <li><strong>Test coupons:</strong> lay up flat sandwich panels and check stiffness and impact behavior.</li>
+        <li><strong>Prototype</strong> the shell on a foam plug, then weigh and drop-test it.</li>
+      </ol>
+    </article>
+  </div>
+
+  <nav class="next-prev" aria-label="More projects">
+    <a href="concrete-canoe.html#season-2026-27"><span class="mono">← In progress</span><b>Canoe: Hull CFD &amp; Reusable Mold</b></a>
+    <a href="brokepart.html"><span class="mono">In progress →</span><b>BrokePart</b></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© <span id="yr">2026</span> Maximilian Purcea</span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle dark mode">◐ Theme</button>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

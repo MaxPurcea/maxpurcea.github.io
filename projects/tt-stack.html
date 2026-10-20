@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modular Time-Trial Aerobar Stack — Maximilian Purcea</title>
+  <meta name="description" content="A modular, CNC-friendly aerobar stack system that replaces one-off 3D-printed metal parts for time-trial riders.">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Primary">
+    <a class="brand" href="../index.html"><span class="brand-mark">MP</span><span>Maximilian Purcea</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#rowing">Rowing</a></li>
+      <li><a href="../index.html#resume">Resume</a></li>
+      <li><a class="cta" href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="container">
+  <a class="back" href="../index.html#projects">← All projects</a>
+
+  <section class="case-hero">
+    <span class="eyebrow">Princeton Carbon Works · Summer 2026</span>
+    <h1>A modular aerobar stack that fits any rider</h1>
+    <p class="lede">A professional team's time-trial bikes used aerobar "stacks" that were 3D printed in metal, one per rider. They were expensive, bulky, and slow to change during a wind-tunnel fitting. I designed a system of universal, machinable spacers that stack and bolt together to hit any rider's height, reach, and lateral offset.</p>
+    <div class="case-meta">
+      <div><span class="mono">Role</span><span>Engineering Intern (design)</span></div>
+      <div><span class="mono">Timeline</span><span>Summer 2026</span></div>
+      <div><span class="mono">Tools</span><span>SolidWorks, rider fit data</span></div>
+      <div><span class="mono">Status</span><span>Concept design; FEA and CFD next</span></div>
+    </div>
+  </section>
+
+  <div class="case-body">
+    <aside class="toc" aria-label="On this page">
+      <span class="mono">On this page</span>
+      <ol>
+        <li><a href="#problem">Problem</a></li>
+        <li><a href="#design">Design</a></li>
+        <li><a href="#iterations">Iterations</a></li>
+        <li><a href="#data">Using rider data</a></li>
+        <li><a href="#next">Next steps</a></li>
+      </ol>
+    </aside>
+
+    <article class="prose">
+      <h2 id="problem">Problem</h2>
+      <ul>
+        <li>Each stack was a <strong>single custom part</strong> built for one rider's height, width, and reach. Any position change meant a new print.</li>
+        <li>The older designs used <strong>long through-bolts</strong> that ran the whole height of the assembly. They were heavy, bulky, and hard to reconfigure.</li>
+        <li>The goal was a modular kit that could be <strong>CNC milled</strong> (a cheaper, subtractive process) and reassembled quickly, for example during a rider's wind-tunnel fit.</li>
+      </ul>
+
+      <h2 id="design">Design</h2>
+      <div class="diagram" role="img" aria-label="Exploded diagram of the modular stack">
+        <svg viewBox="0 0 640 300">
+          <g font-family="JetBrains Mono, monospace" font-size="12" fill="var(--ink-2)" transform="translate(-80 0)">
+            <rect x="230" y="246" width="180" height="26" rx="4" fill="var(--ink)"/>
+            <path d="M290 272v14h60v-14" fill="none" stroke="var(--ink)" stroke-width="2"/>
+            <text x="430" y="264">keyed base (fits cockpit)</text>
+            <rect x="230" y="206" width="180" height="26" rx="4" fill="var(--bg-card)" stroke="var(--ink)" stroke-width="2"/>
+            <rect x="230" y="166" width="180" height="26" rx="4" fill="var(--bg-card)" stroke="var(--ink)" stroke-width="2"/>
+            <text x="430" y="200">standard spacers (height)</text>
+            <path d="M230 126h180l14 26H244z" fill="var(--bg-card)" stroke="var(--ink)" stroke-width="2"/>
+            <text x="440" y="144">offset spacer (lateral)</text>
+            <rect x="244" y="86" width="180" height="26" rx="4" fill="var(--accent)"/>
+            <text x="440" y="104">armrest / extension mount</text>
+            <path d="M398 92V266" stroke="var(--accent)" stroke-width="5" stroke-dasharray="7 5"/>
+            <text x="150" y="58" fill="var(--accent)">rear-mounted bolt</text>
+            <path d="M282 54 C 350 54, 390 62, 398 86" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+          </g>
+        </svg>
+      </div>
+      <ul>
+        <li><strong>Keyed base.</strong> It slots and bolts into the existing cutout in the bike's cockpit, so no frame changes are needed.</li>
+        <li><strong>Rear-mounted bolt.</strong> Moving the bolt to the back allows a larger, stronger fastener and bigger contact faces between parts, and keeps hardware out of the airflow.</li>
+        <li><strong>Offset spacers.</strong> These add lateral adjustment two ways: spacers that start vertical, step sideways, and return to vertical, and spacers that let more spacers stack at an angle.</li>
+      </ul>
+
+      <h2 id="iterations">Iterations</h2>
+      <ol class="steps">
+        <li><strong>Two inward bolts with interlocking male/female geometry.</strong> Rejected because the bolt size was too small.</li>
+        <li><strong>One cross bolt.</strong> It fit a bigger bolt, but matching threads from a middle male part to an outer female wall would be hard to machine.</li>
+        <li><strong>Rear bolt.</strong> Kept, because it fit the largest bolt diameter of all three designs.</li>
+      </ol>
+      <div class="callout">
+        <span class="mono">Trade-off I flagged</span>
+        <p>The angled ("shear") version has a weakness built into its name. Contact faces above the angled pieces carry <strong>shear</strong>, while the standard stack only sees normal force between faces. That difference has to be quantified before the angled version can be trusted.</p>
+      </div>
+
+      <h2 id="data">Using rider data</h2>
+      <p>Once we had the team's aerobar position data, we could set the <strong>maximum adjustability</strong> the system actually needs. We sized parts so the most frequently changed dimensions are the easiest to change. That maximizes usability without paying for range nobody uses.</p>
+
+      <h2 id="next">Next steps</h2>
+      <ul>
+        <li><strong>Consolidate parts.</strong> Turn common rider positions into compound spacers to cut part count and bolt count. For example, if most riders sit in the same height band with the same offset, one taller base piece replaces several spacers.</li>
+        <li><strong>FEA</strong> on the standard and angled designs to compare safety factor, stiffness, and weight.</li>
+        <li><strong>CFD</strong> on the winning design to reduce CdA and find where the profile can be refined.</li>
+      </ul>
+    </article>
+  </div>
+
+  <nav class="next-prev" aria-label="More projects">
+    <a href="drawings-and-hangers.html"><span class="mono">← Previous</span><b>GD&amp;T Drawings &amp; Hanger Replicas</b></a>
+    <a href="bom-tool.html"><span class="mono">Next →</span><b>BOM Shortage Tool</b></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© <span id="yr">2026</span> Maximilian Purcea</span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle dark mode">◐ Theme</button>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

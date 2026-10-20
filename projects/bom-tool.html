@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BOM Shortage Tool — Maximilian Purcea</title>
+  <meta name="description" content="A Python and Excel tool that reads live BOM data, flags short builds, and routes each shortfall to a contract factory.">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Primary">
+    <a class="brand" href="../index.html"><span class="brand-mark">MP</span><span>Maximilian Purcea</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#rowing">Rowing</a></li>
+      <li><a href="../index.html#resume">Resume</a></li>
+      <li><a class="cta" href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="container">
+  <a class="back" href="../index.html#projects">← All projects</a>
+
+  <section class="case-hero">
+    <span class="eyebrow">Princeton Carbon Works · Summer 2026</span>
+    <h1>Automating the parts-shortage review</h1>
+    <p class="lede">Someone regularly checked by hand whether upcoming builds had every part they needed, and decided which contract factory should cover each gap. I built a Python and Excel tool that does that check from live bill-of-materials data.</p>
+    <div class="case-meta">
+      <div><span class="mono">Role</span><span>Engineering Intern</span></div>
+      <div><span class="mono">Timeline</span><span>Summer 2026</span></div>
+      <div><span class="mono">Tools</span><span>Python, pandas, Excel</span></div>
+      <div><span class="mono">Impact</span><span>Replaced a recurring manual review</span></div>
+    </div>
+  </section>
+
+  <div class="case-body">
+    <aside class="toc" aria-label="On this page">
+      <span class="mono">On this page</span>
+      <ol>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#why">Why it mattered</a></li>
+      </ol>
+    </aside>
+    <article class="prose">
+      <h2 id="how">How it works</h2>
+      <ol class="steps">
+        <li><strong>Read.</strong> The tool pulls live bill-of-materials data instead of a stale export.</li>
+        <li><strong>Check.</strong> It compares what upcoming builds need against what's on hand and flags every build that is short on parts.</li>
+        <li><strong>Assign.</strong> It routes each shortfall to one of the company's two contract factories.</li>
+        <li><strong>Hand off.</strong> The results land in Excel, where the team already works, so nobody has to learn anything new.</li>
+      </ol>
+      <!-- EDIT ME: add a sentence on how often it runs / how much time it saves, if you know -->
+      <h2 id="why">Why it mattered</h2>
+      <p>This review used to be a recurring manual task. Now it is a repeatable check that takes one run. The lesson I took away is that a small script that removes a weekly chore can be one of the most valuable engineering tools a team has.</p>
+      <p style="font-size:14px;color:var(--ink-3)">Part numbers, quantities, and supplier details are confidential and not shown.</p>
+    </article>
+  </div>
+
+  <nav class="next-prev" aria-label="More projects">
+    <a href="tt-stack.html"><span class="mono">← Previous</span><b>Modular Time-Trial Aerobar Stack</b></a>
+    <a href="rim-aerodynamics.html"><span class="mono">Next →</span><b>Parametric Rim Aerodynamics</b></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>© <span id="yr">2026</span> Maximilian Purcea</span>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Toggle dark mode">◐ Theme</button>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
