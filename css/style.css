@@ -504,3 +504,22 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.15; letter-spacing: -0.02em; font-wei
 .summary .mono { display: block; margin-bottom: 6px; font-size: 11.5px; color: var(--accent); }
 .summary p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink); }
 @media (max-width: 760px) { .summary { grid-template-columns: 1fr; } .summary div + div { border-left: 0; border-top: 1px solid var(--line); } }
+
+/* Rowing section */
+#rowing .row-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: stretch; }
+.row-title { font-family: var(--font-sans); font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); margin: 0 0 20px; }
+.row-copy { min-width: 0; }
+.row-copy p { color: var(--ink-2); max-width: 62ch; margin-bottom: 24px; }
+.row-results { list-style: none; padding: 0; margin: 0 0 28px; background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); }
+.row-results li { display: grid; grid-template-columns: 52px 1fr auto; gap: 14px; align-items: baseline; padding: 12px 18px; }
+.row-results li + li { border-top: 1px solid var(--line); }
+.row-results b { font-family: var(--font-mono); font-weight: 500; color: var(--accent); font-size: 16px; }
+.row-results span { color: var(--ink); font-size: 15px; }
+.row-results em { font-style: normal; font-family: var(--font-mono); font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.row-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.row-pair figure { margin: 0; }
+.row-pair img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--line); }
+.row-pair figcaption { font-size: 13px; color: var(--ink-3); margin-top: 6px; }
+.row-lead { margin: 0; min-height: 100%; }
+.row-lead img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); }
+@media (max-width: 900px) { #rowing .row-grid { grid-template-columns: 1fr; gap: 32px; } .row-lead img { min-height: 0; aspect-ratio: 4 / 5; height: auto; } }
