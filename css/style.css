@@ -550,3 +550,15 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.15; letter-spacing: -0.02em; font-wei
 .prose .rank-cols li::before { content: counter(r); font: 500 12px var(--font-mono); color: var(--ink-3); width: 14px; }
 .prose .rank-cols li:first-child { font-weight: 600; }
 @media (max-width: 520px) { .rank-cols { grid-template-columns: 1fr; } }
+.case-solo .summary { max-width: 860px; margin: 28px auto 0; }
+.case-solo .media-cover { margin-top: 28px; }
+.chart-fig .bar { transform-box: fill-box; transform-origin: left center; transform: scaleX(0); transition: transform 1.3s cubic-bezier(.22,.61,.36,1); }
+.chart-fig.in .bar { transform: scaleX(1); }
+.chart-fig .fade { opacity: 0; transition: opacity 1.2s ease 1.2s; }
+.chart-fig.in .fade { opacity: .1; }
+@media (prefers-reduced-motion: reduce) { .chart-fig .bar { transform: none; transition: none; } .chart-fig .fade { opacity: .1; transition: none; } }
+.prose img.tunnel { max-height: 600px; object-fit: cover; object-position: center 60%; }
+@media (max-width: 600px) {
+  .chart-fig { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-fig .chart { min-width: 560px; }
+}

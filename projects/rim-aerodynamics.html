@@ -42,8 +42,14 @@
   <section class="case-hero">
     <span class="eyebrow">Princeton Carbon Works · Summer 2026</span>
     <h1>Parametric Rim Aerodynamics</h1>
-    <p class="lede">Parametric CAD and CFD used to reduce triathlon wheel drag across the crosswind conditions riders actually see in a race.</p>
+    <p class="lede">Redesigned the cross-section of a 95 mm triathlon rim using parametric CAD and race-weighted CFD, reducing its simulated race drag by about 36% compared with the existing profile.</p>
   </section>
+
+  <div class="summary">
+    <div><span class="mono">Objective</span><p>Lower the drag of the company's 95 mm triathlon rim across the crosswind angles riders see in a race, not only head-on.</p></div>
+    <div><span class="mono">My contribution</span><p>Built the parametric rim model, ran the CFD yaw sweeps, wrote the Python race-weighting analysis, and analyzed which parameters drove drag at each depth.</p></div>
+    <div><span class="mono">Result</span><p>The final 95 mm profile cut race-weighted drag by about 36%. Ranked profiles and design guidelines for 75 and 95 mm rims went to the engineering team.</p></div>
+  </div>
 
   <figure class="case-cover media-cover glide">
     <video autoplay muted loop playsinline preload="auto" poster="../img/rim-orbit-poster.jpg" width="1280" height="706" aria-label="Rotating view of a trispoke wheel with surface pressure coloring and streamlines">
@@ -53,11 +59,96 @@
   </figure>
 
   <article class="prose">
-    <h2>Objective</h2>
-    <p>Improve the aerodynamics of the company's 75 mm and 95 mm triathlon rims. Most rim profiles are tuned at 0° yaw, but crosswinds put a racing wheel at a range of angles, so the goal was to find the rim shape with the lowest drag across a race rather than at a single angle.</p>
+    <h2>Results</h2>
+    <p>The 95 mm rim is part of the wheelset raced by the company's sponsored athletes at the Ironman World Championship in Kona. Over the summer it went through several rounds of redesign, and each round lowered race-weighted drag. Narrowing the rim gave the first large gain. Setting the maximum width at 105% of tire width and placing it at 40% of rim depth gave the second. Tuning the shoulder and trailing-edge splines brought the total reduction to about 36%.</p>
 
-    <h2>Approach</h2>
-    <p>I built a parametric rim profile in SolidWorks and Fusion 360, controlled by maximum width, the position of maximum width, and the shoulder and trailing-edge spline lengths. Each variation was simulated in NablaFlow AeroCloud from 0° to 20° yaw, and a Python script weighted the results by how much time a triathlete spends at each angle to rank the designs.</p>
+    <figure class="chart-fig glide">
+      <svg viewBox="0 0 640 280" role="img" aria-labelledby="cAt" class="chart">
+<title id="cAt">Race-weighted drag of each 95 millimeter design stage as a percentage of the existing profile: existing 100, narrowed 82, 105 percent width with max width at 40 percent depth 73, tuned shoulder and trailing edge 64.</title>
+<style>.tk{font:11px var(--font-mono);fill:var(--ink-3)}.al{font:12px var(--font-sans);fill:var(--ink-2)}.lb{font:13px var(--font-sans);fill:var(--ink)}.an{font:600 12.5px var(--font-sans);fill:var(--accent)}.vl{font:500 12px var(--font-mono);fill:var(--ink-2)}.nt{font:11.5px var(--font-sans);fill:var(--ink-3)}</style>
+<line x1="220.0" x2="220.0" y1="34" y2="230" stroke="var(--line)"/>
+<text x="220.0" y="248" text-anchor="middle" class="tk">0%</text>
+<line x1="310.5" x2="310.5" y1="34" y2="230" stroke="var(--line)"/>
+<text x="310.5" y="248" text-anchor="middle" class="tk">25%</text>
+<line x1="401.0" x2="401.0" y1="34" y2="230" stroke="var(--line)"/>
+<text x="401.0" y="248" text-anchor="middle" class="tk">50%</text>
+<line x1="491.5" x2="491.5" y1="34" y2="230" stroke="var(--line)"/>
+<text x="491.5" y="248" text-anchor="middle" class="tk">75%</text>
+<line x1="582.0" x2="582.0" y1="34" y2="230" stroke="var(--line)"/>
+<text x="582.0" y="248" text-anchor="middle" class="tk">100%</text>
+<text x="401.0" y="272" text-anchor="middle" class="al">Race-weighted drag (% of existing profile)</text>
+<text x="206" y="22" text-anchor="end" class="al">Design stage</text>
+<text x="206" y="61.5" text-anchor="end" class="lb">Existing 95 mm profile</text>
+<rect class="bar" style="transition-delay:0.15s" x="220" y="42" width="362.0" height="30" rx="3" fill="var(--ink-3)" opacity="0.45"/>
+<text x="590.0" y="61.5" class="vl">100%</text>
+<text x="206" y="107.5" text-anchor="end" class="lb">Narrowed rim</text>
+<rect class="bar" style="transition-delay:0.33s" x="220" y="88" width="296.1" height="30" rx="3" fill="var(--accent)" opacity="0.45"/>
+<text x="524.1" y="107.5" class="vl">−18%</text>
+<text x="206" y="153.5" text-anchor="end" class="lb">105% width at 40% depth</text>
+<rect class="bar" style="transition-delay:0.51s" x="220" y="134" width="263.2" height="30" rx="3" fill="var(--accent)" opacity="0.45"/>
+<text x="491.2" y="153.5" class="vl">−27%</text>
+<text x="206" y="199.5" text-anchor="end" class="lb" font-weight="600">Tuned shoulder and trailing edge</text>
+<rect class="bar" style="transition-delay:0.69s" x="220" y="180" width="232.0" height="30" rx="3" fill="var(--accent)" opacity="1"/>
+<text x="460.0" y="199.5" class="an">−36%</text>
+</svg>
+      <figcaption>Race-weighted drag of each 95 mm design stage in CFD, relative to the existing profile.</figcaption>
+    </figure>
+
+    <p>Most of that gain comes in crosswind. Head-on, the final profile has about 19% less drag than the existing rim. At 5° the difference is 36%, and by 10° the new profile turns its side force into net forward thrust, much like a sail. Riders spend most of a race between 2.5° and 7.5° of yaw, which is why designing for those angles paid off.</p>
+
+    <figure class="chart-fig glide">
+      <svg viewBox="0 0 640 320" role="img" aria-labelledby="cBt" class="chart">
+<title id="cBt">Drag versus yaw angle for the existing and optimized 95 millimeter profiles, normalized to the existing profile at 0 degrees. The gap grows with yaw; at 10 degrees the optimized rim produces net forward force.</title>
+<style>.tk{font:11px var(--font-mono);fill:var(--ink-3)}.al{font:12px var(--font-sans);fill:var(--ink-2)}.lb{font:13px var(--font-sans);fill:var(--ink)}.an{font:600 12.5px var(--font-sans);fill:var(--accent)}.vl{font:500 12px var(--font-mono);fill:var(--ink-2)}.nt{font:11.5px var(--font-sans);fill:var(--ink-3)}</style>
+<line x1="74" x2="544" y1="264.2" y2="264.2" stroke="var(--line)" stroke-width="1"/>
+<text x="64" y="268.2" text-anchor="end" class="tk">-20%</text>
+<line x1="74" x2="544" y1="226.0" y2="226.0" stroke="var(--line)" stroke-width="1"/>
+<text x="64" y="230.0" text-anchor="end" class="tk">0%</text>
+<line x1="74" x2="544" y1="187.9" y2="187.9" stroke="var(--line)" stroke-width="1"/>
+<text x="64" y="191.9" text-anchor="end" class="tk">20%</text>
+<line x1="74" x2="544" y1="149.7" y2="149.7" stroke="var(--line)" stroke-width="1"/>
+<text x="64" y="153.7" text-anchor="end" class="tk">40%</text>
+<line x1="74" x2="544" y1="111.6" y2="111.6" stroke="var(--line)" stroke-width="1"/>
+<text x="64" y="115.6" text-anchor="end" class="tk">60%</text>
+<line x1="74" x2="544" y1="73.4" y2="73.4" stroke="var(--line)" stroke-width="1"/>
+<text x="64" y="77.4" text-anchor="end" class="tk">80%</text>
+<line x1="74" x2="544" y1="35.3" y2="35.3" stroke="var(--line)" stroke-width="1"/>
+<text x="64" y="39.3" text-anchor="end" class="tk">100%</text>
+<line x1="74" x2="544" y1="226.0" y2="226.0" stroke="var(--ink-3)" stroke-width="1"/>
+<text x="91.4" y="288" text-anchor="middle" class="tk">0°</text>
+<text x="200.2" y="288" text-anchor="middle" class="tk">2.5°</text>
+<text x="309.0" y="288" text-anchor="middle" class="tk">5°</text>
+<text x="417.8" y="288" text-anchor="middle" class="tk">7.5°</text>
+<text x="526.6" y="288" text-anchor="middle" class="tk">10°</text>
+<text x="309.0" y="312" text-anchor="middle" class="al">Yaw angle</text>
+<text transform="translate(16 144.0) rotate(-90)" text-anchor="middle" class="al">Drag (% of existing at 0°)</text>
+<path d="M91.4,35.3 L200.2,45.4 L309.0,73.2 L417.8,109.1 L526.6,126.6 L526.6,250.1 L417.8,191.3 L309.0,128.7 L200.2,85.1 L91.4,71.7 Z" fill="var(--accent)" opacity=".1" class="fade"/>
+<polyline points="91.4,35.3 200.2,45.4 309.0,73.2 417.8,109.1 526.6,126.6" fill="none" stroke="var(--ink-3)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5 4"/>
+<circle cx="91.4" cy="35.3" r="3" fill="var(--bg-card)" stroke="var(--ink-3)" stroke-width="2"/>
+<circle cx="200.2" cy="45.4" r="3" fill="var(--bg-card)" stroke="var(--ink-3)" stroke-width="2"/>
+<circle cx="309.0" cy="73.2" r="3" fill="var(--bg-card)" stroke="var(--ink-3)" stroke-width="2"/>
+<circle cx="417.8" cy="109.1" r="3" fill="var(--bg-card)" stroke="var(--ink-3)" stroke-width="2"/>
+<circle cx="526.6" cy="126.6" r="3" fill="var(--bg-card)" stroke="var(--ink-3)" stroke-width="2"/>
+<text x="538.6" y="130.6" class="vl">Existing</text>
+<polyline points="91.4,71.7 200.2,85.1 309.0,128.7 417.8,191.3 526.6,250.1" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="draw" pathLength="1"/>
+<circle cx="91.4" cy="71.7" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="200.2" cy="85.1" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="309.0" cy="128.7" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="417.8" cy="191.3" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="526.6" cy="250.1" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<text x="538.6" y="254.1" class="an">Optimized</text>
+<text x="509.2" y="258.5" text-anchor="end" class="nt">below zero = net forward force</text>
+</svg>
+      <figcaption>Drag across yaw for the existing and final 95 mm profiles.</figcaption>
+    </figure>
+
+    <h2>Process</h2>
+    <ol class="steps">
+      <li><strong>Parametric model.</strong> Early profiles were elliptical shapes based on NACA airfoil theory. To search more systematically, I rebuilt the rim cross-section in SolidWorks and Fusion 360 as a spline controlled by four parameters: maximum width, the position of maximum width, shoulder length, and trailing-edge length. All profiles were modeled on a 28 mm tire.</li>
+      <li><strong>CFD.</strong> Each profile was simulated in NablaFlow AeroCloud across a yaw sweep from 0° to 20°. Over the summer the intern team simulated more than 100 profiles at 65, 75, and 95 mm depths.</li>
+      <li><strong>Race weighting.</strong> I wrote a Python script that weights the drag at each yaw angle by the share of race time triathletes spend there, so every design is scored on the drag it would see over a full race. I computed the weighting two ways, by nearest neighbor and by interpolation, to confirm the rankings did not depend on the method.</li>
+      <li><strong>Sensitivity analysis.</strong> I compared results across the 75 and 95 mm data sets to find which parameters drove drag at each depth and turned them into design guidelines for the engineering team.</li>
+    </ol>
 
     <figure class="yaw-viewer glide" data-yaw-viewer>
       <div class="yaw-stage">
@@ -73,74 +164,16 @@
           <button type="button" aria-pressed="true">0°</button><button type="button" aria-pressed="false">2.5°</button><button type="button" aria-pressed="false">5°</button><button type="button" aria-pressed="false">7.5°</button><button type="button" aria-pressed="false">10°</button>
         </div>
       </div>
-      <figcaption>The wake behind the rim from 0° to 10° yaw. Lighter color marks lost pressure in the wake.</figcaption>
+      <figcaption>The wake behind a 95 mm candidate from 0° to 10° yaw. Lighter color marks lost pressure.</figcaption>
     </figure>
 
-    <h2>Findings</h2>
-    <p>Optimizing at 0° yaw was not a reliable way to find the fastest wheel. Wider rims, at 110–115% of tire width, were often fastest at 0°, but the narrower ~105% profile frequently matched or beat them once drag was weighted across race yaw angles because of its performance at higher yaw.</p>
-    <p>Which parameters mattered most also changed with depth. Maximum width dominated on the 75 mm rim, while on the 95 mm rim the shoulder length and the position of maximum width carried as much influence or more.</p>
-
-    <figure class="rank-fig glide">
-      <div class="rank-cols">
-        <div>
-          <span class="mono">75 mm rim</span>
-          <ol>
-            <li>Maximum width</li>
-            <li>Shoulder length</li>
-            <li>Trailing-edge length</li>
-            <li>Max-width position</li>
-          </ol>
-        </div>
-        <div>
-          <span class="mono">95 mm rim</span>
-          <ol>
-            <li>Shoulder length</li>
-            <li>Max-width position</li>
-            <li>Maximum width</li>
-            <li>Trailing-edge length</li>
-          </ol>
-        </div>
-      </div>
-      <figcaption>Parameters ranked by their influence on drag, most to least.</figcaption>
-    </figure>
-
-    <p>At both depths, shorter shoulders and a maximum width placed near 40% of rim depth gave the best results. The trailing edge had a stable optimum regardless of depth, and balanced side and bottom spline lengths outperformed profiles dominated by either one.</p>
-
-    <figure class="chart-fig glide">
-      <svg viewBox="0 0 640 310" role="img" aria-labelledby="c4t" class="chart">
-<title id="c4t">Relative drag at 0 degrees yaw versus shoulder spline length on the 95 millimeter rim. Drag falls steadily as the shoulder shortens, reaching about 4.9 percent below the longest shoulder at 20 millimeters.</title>
-<style>.tk{font:11px var(--font-mono);fill:var(--ink-3)}.al{font:12px var(--font-sans);fill:var(--ink-2)}.an{font:600 12.5px var(--font-sans);fill:var(--accent)}</style>
-<line x1="78" x2="612" y1="53.3" y2="53.3" stroke="var(--line)" stroke-width="1"/>
-<text x="68" y="57.3" text-anchor="end" class="tk">0%</text>
-<line x1="78" x2="612" y1="89.8" y2="89.8" stroke="var(--line)" stroke-width="1"/>
-<text x="68" y="93.8" text-anchor="end" class="tk">-1%</text>
-<line x1="78" x2="612" y1="126.4" y2="126.4" stroke="var(--line)" stroke-width="1"/>
-<text x="68" y="130.4" text-anchor="end" class="tk">-2%</text>
-<line x1="78" x2="612" y1="162.9" y2="162.9" stroke="var(--line)" stroke-width="1"/>
-<text x="68" y="166.9" text-anchor="end" class="tk">-3%</text>
-<line x1="78" x2="612" y1="199.5" y2="199.5" stroke="var(--line)" stroke-width="1"/>
-<text x="68" y="203.5" text-anchor="end" class="tk">-4%</text>
-<line x1="78" x2="612" y1="236.1" y2="236.1" stroke="var(--line)" stroke-width="1"/>
-<text x="68" y="240.1" text-anchor="end" class="tk">-5%</text>
-<text x="150.8" y="278" text-anchor="middle" class="tk">20</text>
-<text x="272.2" y="278" text-anchor="middle" class="tk">25</text>
-<text x="393.5" y="278" text-anchor="middle" class="tk">30</text>
-<text x="514.9" y="278" text-anchor="middle" class="tk">35</text>
-<text x="345.0" y="302" text-anchor="middle" class="al">Shoulder spline length (mm)</text>
-<text transform="translate(18 141.0) rotate(-90)" text-anchor="middle" class="al">Drag vs. longest shoulder (%)</text>
-<polyline points="114.4,219.3 150.8,230.5 211.5,192.8 272.2,174.8 332.9,135.2 393.5,139.4 454.2,99.6 575.6,53.3" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" class="draw" pathLength="1"/>
-<circle cx="114.4" cy="219.3" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
-<circle cx="211.5" cy="192.8" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
-<circle cx="272.2" cy="174.8" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
-<circle cx="332.9" cy="135.2" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
-<circle cx="393.5" cy="139.4" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
-<circle cx="454.2" cy="99.6" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
-<circle cx="575.6" cy="53.3" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
-<circle cx="150.8" cy="230.5" r="10" fill="var(--accent)" opacity=".15"/><circle cx="150.8" cy="230.5" r="5" fill="var(--accent)"/>
-<text x="166.8" y="235.5" class="an">−4.8% at 20 mm</text>
-</svg>
-      <figcaption>Relative drag at 0° yaw as the shoulder shortens, 95 mm rim.</figcaption>
-    </figure>
+    <h2>What we learned</h2>
+    <ul>
+      <li><strong>Designing at 0° points the wrong way.</strong> Head-on, drag kept falling as rims got wider, down to about 115% of tire width. Once weighted across race yaw angles, the best profiles were narrower, at 100–105%, because they held up better in crosswind. Even within the final set, the profile with the lowest drag at 0° was not the fastest over a race.</li>
+      <li><strong>Maximum width belongs near 40% of rim depth.</strong> This placement performed best at both depths and carried into the final 95 mm profile.</li>
+      <li><strong>Priorities change with depth.</strong> On the 75 mm rim, maximum width had the largest effect. On the 95 mm rim, shoulder length and the position of maximum width mattered as much or more, because the longer section behind the widest point needs more room to recover pressure.</li>
+      <li><strong>The trailing edge can be set early.</strong> It had the same optimum at both depths, and balanced side and bottom spline lengths outperformed profiles dominated by either one.</li>
+    </ul>
 
     <figure class="media glide">
       <video autoplay muted loop playsinline preload="metadata" poster="../img/rim-slices-poster.jpg" width="1400" height="336" aria-label="Pressure slices moving up through the wheel at 10 degrees yaw">
@@ -149,7 +182,12 @@
       <figcaption>Slices moving up through the wheel at 10° yaw.</figcaption>
     </figure>
 
-    <p>The results and a ranked set of candidate profiles were delivered to the engineering team for the next round of development.</p>
+    <p>All results are from CFD on a rim-and-tire model and are shown relative to the existing profile. Absolute values and final geometries are proprietary to Princeton Carbon Works.</p>
+
+    <figure class="glide">
+      <img src="../img/pcw-wind-tunnel.jpg" alt="Time-trial bicycle mounted on the force balance in the A2 Wind Tunnel test section" loading="lazy" class="tunnel">
+      <figcaption>A time-trial bike on the force balance at the A2 Wind Tunnel.</figcaption>
+    </figure>
   </article>
 
   <nav class="next-prev" aria-label="More projects">
@@ -157,6 +195,7 @@
     <a href="concrete-canoe.html"><span class="mono">Next →</span><b>Cornell Concrete Canoe</b></a>
   </nav>
 </main>
+
 
 <footer class="site-footer">
   <div class="container">
