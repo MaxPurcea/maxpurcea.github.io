@@ -49,17 +49,27 @@
       <div><span class="mono">Tools</span><span>SolidWorks, Fusion 360, NablaFlow AeroCloud, Python</span></div>
       <div><span class="mono">Rim depths</span><span>75 mm and 95 mm</span></div>
     </div>
-    <div class="summary">
-      <div><span class="mono">Objective</span><p>Identify which rim cross-section parameters most influence yaw-weighted drag at 75 mm and 95 mm depth.</p></div>
-      <div><span class="mono">My contribution</span><p>Built the four-parameter CAD model, ran full yaw-range CFD sweeps on every candidate, and wrote the Python yaw-weighting analysis.</p></div>
-      <div><span class="mono">Result</span><p>Maximum rim width was the dominant parameter, with an optimum near 115% of tire width at both depths.</p></div>
-    </div>
   </section>
 
-  <figure class="case-cover">
-    <img src="../img/pcw-streamlines.jpg" alt="CFD streamlines around a deep-section rim and tire" width="1489" height="945">
-    <figcaption>Figure 1. Streamlines around a candidate rim and tire in NablaFlow AeroCloud.</figcaption>
+  <figure class="case-cover media-cover">
+    <video autoplay muted loop playsinline preload="metadata" poster="../img/rim-orbit-poster.jpg" width="1440" height="796" aria-label="Rotating view of a trispoke wheel with surface pressure coloring and streamlines">
+      <source src="../img/rim-orbit.mp4" type="video/mp4">
+    </video>
+    <figcaption>Figure 1. Surface pressure coefficient and streamlines on the 95 mm candidate, simulated on a trispoke wheel at 10° yaw in NablaFlow AeroCloud.</figcaption>
   </figure>
+
+  <div class="stat-strip">
+    <div><b>−2.9%</b><span>Drag at 115% width vs. 105%, 75 mm rim, 0° yaw</span></div>
+    <div><b>−2.1%</b><span>Drag at 115% width vs. 105%, 95 mm rim, 0° yaw</span></div>
+    <div><b>−9.6%</b><span>Yaw-weighted drag, best candidate vs. the lowest-drag profile at 0°</span></div>
+    <div><b>0–20°</b><span>Yaw range simulated for every candidate</span></div>
+  </div>
+
+  <div class="summary">
+    <div><span class="mono">Objective</span><p>Identify which rim cross-section parameters most influence yaw-weighted drag at 75 mm and 95 mm depth.</p></div>
+    <div><span class="mono">My contribution</span><p>Built the four-parameter CAD model, ran full yaw-range CFD sweeps on every candidate, and wrote the Python yaw-weighting analysis.</p></div>
+    <div><span class="mono">Result</span><p>Maximum rim width was the dominant parameter. Drag was lowest at 110–115% of tire width at both depths, wider than the ~105% industry norm.</p></div>
+  </div>
 
   <div class="case-body">
     <aside class="toc" aria-label="On this page">
@@ -68,6 +78,7 @@
         <li><a href="#objective">Objective</a></li>
         <li><a href="#model">Parametric model</a></li>
         <li><a href="#method">Method</a></li>
+        <li><a href="#flow">Flow at yaw</a></li>
         <li><a href="#findings">Findings</a></li>
         <li><a href="#outcomes">Outcomes</a></li>
       </ol>
@@ -81,38 +92,38 @@
       <p>Initial iterations used elliptical profiles informed by NACA airfoil theory, with the position of maximum width varied between 30% and 50% of rim depth. These profiles converged near a maximum width of approximately 105% of tire width, consistent with current industry practice. To explore the design space more systematically, the profile was rebuilt as a spline controlled by four parameters:</p>
 
       <div class="diagram" role="img" aria-label="Rim cross-section diagram showing parameters P1 through P4">
-        <svg viewBox="0 0 640 330">
-          <defs>
-            <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="var(--ink-2)"/></marker>
-          </defs>
-          <!-- tire -->
-          <circle cx="92" cy="160" r="42" fill="var(--bg-soft)" stroke="var(--ink-3)" stroke-width="2"/>
-          <text x="92" y="164" text-anchor="middle" font-size="12" fill="var(--ink-3)">tire</text>
-          <!-- rim profile -->
-          <path d="M126 136 C 160 116, 205 112, 250 112 C 330 112, 470 150, 580 160 C 470 170, 330 208, 250 208 C 205 208, 160 204, 126 184 Z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
-          <!-- P3 handle (shoulder) -->
-          <line x1="250" y1="112" x2="338" y2="112" stroke="var(--ink)" stroke-width="1.5"/>
-          <circle cx="250" cy="112" r="4" fill="var(--ink)"/><circle cx="338" cy="112" r="4" fill="var(--bg-card)" stroke="var(--ink)" stroke-width="1.5"/>
-          <text x="300" y="98" font-size="12" fill="var(--ink)">P3 · shoulder handle</text>
-          <!-- P4 handle (trailing edge) -->
-          <line x1="580" y1="160" x2="520" y2="153" stroke="var(--ink)" stroke-width="1.5"/>
-          <circle cx="580" cy="160" r="4" fill="var(--ink)"/><circle cx="520" cy="153" r="4" fill="var(--bg-card)" stroke="var(--ink)" stroke-width="1.5"/>
-          <text x="420" y="132" font-size="12" fill="var(--ink)">P4 · trailing-edge handle</text>
-          <!-- P2 max width -->
-          <line x1="250" y1="112" x2="250" y2="208" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="3 3"/>
-          <line x1="232" y1="114" x2="232" y2="206" stroke="var(--ink-2)" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
-          <text x="140" y="250" font-size="12" fill="var(--ink)">P2 · max width (% of tire width)</text>
-          <line x1="226" y1="238" x2="232" y2="214" stroke="var(--ink-3)" stroke-width="1"/>
-          <!-- P1 position -->
-          <line x1="128" y1="276" x2="248" y2="276" stroke="var(--ink-2)" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
-          <text x="132" y="296" font-size="12" fill="var(--ink)">P1 · max-width position (% of depth)</text>
-          <!-- depth -->
-          <line x1="128" y1="40" x2="578" y2="40" stroke="var(--ink-3)" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
-          <text x="353" y="32" text-anchor="middle" font-size="12" fill="var(--ink-3)">rim depth · 75 or 95 mm</text>
-          <line x1="128" y1="44" x2="128" y2="132" stroke="var(--line-strong)" stroke-dasharray="3 3"/>
-          <line x1="578" y1="44" x2="578" y2="156" stroke="var(--line-strong)" stroke-dasharray="3 3"/>
-        </svg>
-      </div>
+              <svg viewBox="0 0 640 330">
+                <defs>
+                  <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1L9 5L0 9z" fill="var(--ink-2)"/></marker>
+                </defs>
+                <!-- tire -->
+                <circle cx="92" cy="160" r="42" fill="var(--bg-soft)" stroke="var(--ink-3)" stroke-width="2"/>
+                <text x="92" y="164" text-anchor="middle" font-size="12" fill="var(--ink-3)">tire</text>
+                <!-- rim profile -->
+                <path d="M126 136 C 160 116, 205 112, 250 112 C 330 112, 470 150, 580 160 C 470 170, 330 208, 250 208 C 205 208, 160 204, 126 184 Z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/>
+                <!-- P3 handle (shoulder) -->
+                <line x1="250" y1="112" x2="338" y2="112" stroke="var(--ink)" stroke-width="1.5"/>
+                <circle cx="250" cy="112" r="4" fill="var(--ink)"/><circle cx="338" cy="112" r="4" fill="var(--bg-card)" stroke="var(--ink)" stroke-width="1.5"/>
+                <text x="300" y="98" font-size="12" fill="var(--ink)">P3 · shoulder handle</text>
+                <!-- P4 handle (trailing edge) -->
+                <line x1="580" y1="160" x2="520" y2="153" stroke="var(--ink)" stroke-width="1.5"/>
+                <circle cx="580" cy="160" r="4" fill="var(--ink)"/><circle cx="520" cy="153" r="4" fill="var(--bg-card)" stroke="var(--ink)" stroke-width="1.5"/>
+                <text x="420" y="132" font-size="12" fill="var(--ink)">P4 · trailing-edge handle</text>
+                <!-- P2 max width -->
+                <line x1="250" y1="112" x2="250" y2="208" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="3 3"/>
+                <line x1="232" y1="114" x2="232" y2="206" stroke="var(--ink-2)" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+                <text x="140" y="250" font-size="12" fill="var(--ink)">P2 · max width (% of tire width)</text>
+                <line x1="226" y1="238" x2="232" y2="214" stroke="var(--ink-3)" stroke-width="1"/>
+                <!-- P1 position -->
+                <line x1="128" y1="276" x2="248" y2="276" stroke="var(--ink-2)" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+                <text x="132" y="296" font-size="12" fill="var(--ink)">P1 · max-width position (% of depth)</text>
+                <!-- depth -->
+                <line x1="128" y1="40" x2="578" y2="40" stroke="var(--ink-3)" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+                <text x="353" y="32" text-anchor="middle" font-size="12" fill="var(--ink-3)">rim depth · 75 or 95 mm</text>
+                <line x1="128" y1="44" x2="128" y2="132" stroke="var(--line-strong)" stroke-dasharray="3 3"/>
+                <line x1="578" y1="44" x2="578" y2="156" stroke="var(--line-strong)" stroke-dasharray="3 3"/>
+              </svg>
+            </div>
       <p style="margin-top:12px;font-size:14px;color:var(--ink-3)">Figure 2. Rim cross-section parameters (schematic, not to scale). Each candidate was named by its four parameter values.</p>
 
       <ul>
@@ -125,40 +136,172 @@
       <h2 id="method">Method</h2>
       <ol class="steps">
         <li><strong>Modeling.</strong> Each 75 mm and 95 mm candidate was modeled in SolidWorks and Fusion 360 from the four parameters, on a 28 mm tire.</li>
-        <li><strong>Simulation.</strong> A full yaw sweep from 0° to 20° was run for every candidate in NablaFlow AeroCloud.</li>
-        <li><strong>Yaw weighting.</strong> A Python script grouped drag results into eight yaw bins and weighted each bin by the proportion of race time spent at that angle. Weighted averages were computed by both nearest-neighbor and interpolation methods to confirm that the ranking did not depend on the method.</li>
+        <li><strong>Simulation.</strong> A yaw sweep from 0° to 20° was run for every candidate in NablaFlow AeroCloud.</li>
+        <li><strong>Yaw weighting.</strong> A Python script grouped drag results into yaw bins and weighted each bin by the proportion of race time spent at that angle. Weighted averages were computed by both nearest-neighbor and interpolation methods to confirm that the ranking did not depend on the method.</li>
         <li><strong>Ranking.</strong> Weighted drag was compared across the exploratory, 75 mm, 95 mm, and disc candidate sets to quantify the influence of each parameter.</li>
       </ol>
 
       <figure>
-        <img src="../img/pcw-pressure.jpg" alt="Pressure contour behind a rim cross-section" loading="lazy" width="1095" height="823">
-        <figcaption>Figure 3. Pressure coefficient contour in the wake of a rim section.</figcaption>
+        <img src="../img/pcw-wind-tunnel.jpg" alt="Time-trial bicycle mounted on the force balance in the A2 Wind Tunnel test section" loading="lazy" style="max-height:640px;object-fit:cover">
+        <figcaption>Figure 3. Bicycle mounted on the force balance at the A2 Wind Tunnel.</figcaption>
       </figure>
 
-      <figure>
-        <img src="../img/pcw-wind-tunnel.jpg" alt="Time-trial bicycle mounted on the force balance in the A2 Wind Tunnel test section" loading="lazy" style="max-height:640px;object-fit:cover">
-        <figcaption>Figure 4. Bicycle mounted on the force balance at the A2 Wind Tunnel.</figcaption>
+      <h2 id="flow">Flow at yaw</h2>
+      <p>As yaw increases, the wake leaving the rim deflects and the flow on the leeward side begins to separate. The slices below show total pressure at the hub plane of the 95 mm candidate; lighter colors mark total-pressure loss in the wake.</p>
+
+      <figure class="yaw-viewer" data-yaw-viewer>
+        <div class="yaw-stage">
+          <img src="../img/rim-yaw-0.jpg" alt="Wake behind the rim at 0 degrees yaw" class="on" width="1400" height="374">
+          <img src="../img/rim-yaw-2_5.jpg" alt="Wake behind the rim at 2.5 degrees yaw" loading="lazy" width="1400" height="374">
+          <img src="../img/rim-yaw-5.jpg" alt="Wake behind the rim at 5 degrees yaw" loading="lazy" width="1400" height="374">
+          <img src="../img/rim-yaw-7_5.jpg" alt="Wake behind the rim at 7.5 degrees yaw" loading="lazy" width="1400" height="374">
+          <img src="../img/rim-yaw-10.jpg" alt="Wake behind the rim at 10 degrees yaw" loading="lazy" width="1400" height="374">
+          <span class="yaw-flow mono">Flow →</span>
+        </div>
+        <div class="yaw-controls">
+          <div class="yaw-btns" role="group" aria-label="Yaw angle">
+            <button type="button" aria-pressed="true">0°</button><button type="button" aria-pressed="false">2.5°</button><button type="button" aria-pressed="false">5°</button><button type="button" aria-pressed="false">7.5°</button><button type="button" aria-pressed="false">10°</button>
+          </div>
+          <div class="cp-scale"><span class="mono">C<sub>p,total</sub></span><i></i><span class="mono">−0.6</span><span class="mono">1.0</span></div>
+        </div>
+        <figcaption>Figure 4. Total pressure coefficient at the hub plane, 0° to 10° yaw. Select an angle, or let it cycle.</figcaption>
+      </figure>
+
+      <figure class="media">
+        <video autoplay muted loop playsinline preload="metadata" poster="../img/rim-slices-poster.jpg" width="1400" height="336" aria-label="Horizontal pressure slices stepping up through the wheel">
+          <source src="../img/rim-slices.mp4" type="video/mp4">
+        </video>
+        <figcaption>Figure 5. Horizontal slices stepped from the bottom of the wheel to the top at 10° yaw, total pressure coefficient.</figcaption>
       </figure>
 
       <h2 id="findings">Findings</h2>
       <div class="callout">
         <span class="mono">Principal result</span>
-        <p><strong>Maximum rim width (P2) was the dominant parameter, with an optimum near 115% of tire width at both depths.</strong> This is wider than the common industry value of approximately 105%.</p>
+        <p><strong>Maximum rim width (P2) was the dominant parameter.</strong> At 0° yaw, drag was lowest at 115% of tire width at both depths, 2.9% below the 105% profile at 75 mm and 2.1% below at 95 mm. Yaw-weighted comparisons placed the best profiles between 110% and 115%. Both are wider than the common industry value of approximately 105%.</p>
       </div>
+
+      <figure class="chart-fig">
+        <svg viewBox="0 0 640 360" role="img" aria-labelledby="c1t" class="chart">
+<title id="c1t">Drag at 0 degrees yaw versus maximum rim width, normalized to 105 percent width, for 75 and 95 millimeter rims. Both reach a minimum at 115 percent.</title>
+<style>.tk{font:11px var(--font-mono);fill:var(--ink-3)}.al{font:12px var(--font-sans);fill:var(--ink-2)}.lb{font:600 12px var(--font-sans)}.nt{font:11.5px var(--font-sans);fill:var(--ink-3)}</style>
+<rect x="292.5" y="24" width="36.4" height="284" fill="var(--accent-soft)"/>
+<line x1="56" x2="620" y1="285.3" y2="285.3" stroke="var(--line)" stroke-width="1" />
+<text x="48" y="289.3" text-anchor="end" class="tk">-3</text>
+<line x1="56" x2="620" y1="239.8" y2="239.8" stroke="var(--line)" stroke-width="1" />
+<text x="48" y="243.8" text-anchor="end" class="tk">-2</text>
+<line x1="56" x2="620" y1="194.4" y2="194.4" stroke="var(--line)" stroke-width="1" />
+<text x="48" y="198.4" text-anchor="end" class="tk">-1</text>
+<line x1="56" x2="620" y1="149.0" y2="149.0" stroke="var(--line)" stroke-width="1" stroke-dasharray="0"/>
+<text x="48" y="153.0" text-anchor="end" class="tk">0</text>
+<line x1="56" x2="620" y1="103.5" y2="103.5" stroke="var(--line)" stroke-width="1" />
+<text x="48" y="107.5" text-anchor="end" class="tk">+1</text>
+<line x1="56" x2="620" y1="58.1" y2="58.1" stroke="var(--line)" stroke-width="1" />
+<text x="48" y="62.1" text-anchor="end" class="tk">+2</text>
+<text x="128.8" y="326" text-anchor="middle" class="tk">105</text>
+<text x="219.7" y="326" text-anchor="middle" class="tk">110</text>
+<text x="310.7" y="326" text-anchor="middle" class="tk">115</text>
+<text x="401.7" y="326" text-anchor="middle" class="tk">120</text>
+<text x="492.6" y="326" text-anchor="middle" class="tk">125</text>
+<text x="583.6" y="326" text-anchor="middle" class="tk">130</text>
+<line x1="56" x2="620" y1="308" y2="308" stroke="var(--line-strong)"/>
+<text x="338.0" y="350" text-anchor="middle" class="al">Maximum rim width (% of tire width)</text>
+<text transform="translate(14 166.0) rotate(-90)" text-anchor="middle" class="al">Δ drag vs. 105% (%)</text>
+<line x1="128.8" x2="128.8" y1="24" y2="308" stroke="var(--ink-3)" stroke-dasharray="4 4"/><text x="134.8" y="38" class="nt">~105% industry norm</text>
+<text x="336.2" y="296.6" class="nt">115%</text>
+<polyline points="92.4,132.9 128.8,149.0 165.2,146.5 201.5,194.9 237.9,216.7 274.3,217.5 310.7,279.1 347.1,265.6 383.5,194.6" fill="none" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="92.4" cy="132.9" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="128.8" cy="149.0" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="165.2" cy="146.5" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="201.5" cy="194.9" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="237.9" cy="216.7" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="274.3" cy="217.5" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="310.7" cy="279.1" r="4.5" fill="var(--ink-2)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="347.1" cy="265.6" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="383.5" cy="194.6" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<polyline points="128.8,149.0 165.2,115.3 201.5,224.8 219.7,239.1 237.9,130.2 274.3,211.6 310.7,244.2 328.9,186.2 347.1,234.8 365.3,223.6 383.5,169.1 401.7,117.0 583.6,37.8" fill="none" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="128.8" cy="149.0" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="165.2" cy="115.3" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="201.5" cy="224.8" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="219.7" cy="239.1" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="237.9" cy="130.2" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="274.3" cy="211.6" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="310.7" cy="244.2" r="4.5" fill="var(--accent)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="328.9" cy="186.2" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="347.1" cy="234.8" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="365.3" cy="223.6" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="383.5" cy="169.1" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="401.7" cy="117.0" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="583.6" cy="37.8" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<g transform="translate(490 274)"><line x1="0" x2="22" y1="-4" y2="-4" stroke="var(--accent)" stroke-width="2"/><text x="30" y="0" class="lb" fill="var(--ink)">95 mm rim</text><line x1="0" x2="22" y1="14" y2="14" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="5 4"/><text x="30" y="18" class="lb" fill="var(--ink)">75 mm rim</text></g>
+</svg>
+        <figcaption>Figure 6. Drag at 0° yaw versus maximum rim width, with the position of maximum width fixed at 42.5% of depth. Each depth is normalized to its own 105% profile.</figcaption>
+      </figure>
+
       <ul>
-        <li><strong>Yaw weighting changed the ranking.</strong> Profiles with the lowest drag at 0° were often not the lowest after yaw weighting; performance at higher yaw angles determined the final order.</li>
+        <li><strong>Yaw weighting changed the ranking.</strong> Profiles with the lowest drag at 0° were often not the lowest after yaw weighting; performance at higher yaw angles determined the final order (Figure 7).</li>
         <li><strong>Parameter influence varied with depth.</strong> At 75 mm, P2 was clearly dominant. At 95 mm, the shoulder handle (P3) and position of maximum width (P1) together had an influence comparable to P2. The longer chord aft of maximum width on a deeper rim requires more length for pressure recovery.</li>
         <li><strong>Shorter shoulder handles performed better.</strong> The shortest P3 value tested produced the lowest drag at both depths, indicating that the optimum may lie below the tested range. The practical limit is likely set by manufacturing or structural requirements.</li>
         <li><strong>The trailing-edge parameter was stable.</strong> P4 showed a consistent optimum that did not change with depth.</li>
         <li><strong>Balanced spline lengths performed best.</strong> Matched side and bottom spline lengths outperformed profiles in which either parameter dominated.</li>
       </ul>
-      <p style="font-size:14px;color:var(--ink-3)">Drag values and candidate geometries are proprietary to Princeton Carbon Works and are not shown.</p>
+
+      <figure class="chart-fig">
+        <svg viewBox="0 0 640 360" role="img" aria-labelledby="c2t" class="chart">
+<title id="c2t">Drag versus yaw angle for three 95 millimeter candidates, normalized to candidate A at 0 degrees. Candidate A is lowest at 0 degrees but highest after yaw weighting.</title>
+<style>.tk{font:11px var(--font-mono);fill:var(--ink-3)}.al{font:12px var(--font-sans);fill:var(--ink-2)}.lb{font:600 12px var(--font-sans)}.nt{font:11.5px var(--font-sans);fill:var(--ink-3)}</style>
+<line x1="56" x2="620" y1="273.4" y2="273.4" stroke="var(--line)" stroke-width="1" stroke-dasharray="0"/>
+<text x="48" y="277.4" text-anchor="end" class="tk">0</text>
+<line x1="56" x2="620" y1="204.1" y2="204.1" stroke="var(--line)" stroke-width="1" />
+<text x="48" y="208.1" text-anchor="end" class="tk">50</text>
+<line x1="56" x2="620" y1="134.8" y2="134.8" stroke="var(--line)" stroke-width="1" />
+<text x="48" y="138.8" text-anchor="end" class="tk">100</text>
+<line x1="56" x2="620" y1="65.6" y2="65.6" stroke="var(--line)" stroke-width="1" />
+<text x="48" y="69.6" text-anchor="end" class="tk">150</text>
+<text x="81.6" y="326" text-anchor="middle" class="tk">0</text>
+<text x="209.8" y="326" text-anchor="middle" class="tk">5</text>
+<text x="338.0" y="326" text-anchor="middle" class="tk">10</text>
+<text x="466.2" y="326" text-anchor="middle" class="tk">15</text>
+<text x="594.4" y="326" text-anchor="middle" class="tk">20</text>
+<line x1="56" x2="620" y1="308" y2="308" stroke="var(--line-strong)"/>
+<text x="338.0" y="350" text-anchor="middle" class="al">Yaw angle (°)</text>
+<text transform="translate(14 166.0) rotate(-90)" text-anchor="middle" class="al">Drag (% of Candidate A at 0°)</text>
+<line x1="56" x2="620" y1="273.4" y2="273.4" stroke="var(--ink-3)"/>
+<polyline points="81.6,134.8 209.8,182.5 338.0,253.1 466.2,245.8 594.4,36.1" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 4"/>
+<circle cx="81.6" cy="134.8" r="3" fill="var(--bg-card)" stroke="var(--ink-3)" stroke-width="2"/>
+<circle cx="209.8" cy="182.5" r="3" fill="var(--bg-card)" stroke="var(--ink-3)" stroke-width="2"/>
+<circle cx="338.0" cy="253.1" r="3" fill="var(--bg-card)" stroke="var(--ink-3)" stroke-width="2"/>
+<circle cx="466.2" cy="245.8" r="3" fill="var(--bg-card)" stroke="var(--ink-3)" stroke-width="2"/>
+<circle cx="594.4" cy="36.1" r="3" fill="var(--bg-card)" stroke="var(--ink-3)" stroke-width="2"/>
+<text x="602.4" y="32.1" class="lb" fill="var(--ink-3)">A</text>
+<polyline points="81.6,134.2 209.8,183.4 338.0,283.3 466.2,233.0 594.4,40.2" fill="none" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="2 3"/>
+<circle cx="81.6" cy="134.2" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="209.8" cy="183.4" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="338.0" cy="283.3" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="466.2" cy="233.0" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<circle cx="594.4" cy="40.2" r="3" fill="var(--bg-card)" stroke="var(--ink-2)" stroke-width="2"/>
+<text x="602.4" y="52.2" class="lb" fill="var(--ink-2)">B</text>
+<polyline points="81.6,132.7 209.8,183.7 338.0,287.6 466.2,253.6 594.4,74.6" fill="none" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="81.6" cy="132.7" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="209.8" cy="183.7" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="338.0" cy="287.6" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="466.2" cy="253.6" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<circle cx="594.4" cy="74.6" r="3" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="2"/>
+<text x="602.4" y="78.6" class="lb" fill="var(--accent)">C</text>
+<text x="317.5" y="295.5" text-anchor="end" class="nt">net drag below zero</text>
+<g transform="translate(306 30)"><text x="0" y="0" class="nt">Yaw-weighted drag (A = 100)</text>
+<text x="0" y="23" class="lb" fill="var(--ink-3)">A</text><rect x="16" y="12" width="150.0" height="13" rx="2" fill="var(--ink-3)" opacity="0.55"/><text x="172.0" y="23" class="tk">100.0</text>
+<text x="0" y="43" class="lb" fill="var(--ink-2)">B</text><rect x="16" y="32" width="109.0" height="13" rx="2" fill="var(--ink-2)" opacity="0.55"/><text x="131.0" y="43" class="tk">94.5</text>
+<text x="0" y="63" class="lb" fill="var(--accent)">C</text><rect x="16" y="52" width="78.2" height="13" rx="2" fill="var(--accent)" opacity="1"/><text x="100.2" y="63" class="tk">90.4</text>
+</g>
+</svg>
+        <figcaption>Figure 7. Drag across yaw for three 95 mm candidates with identical width and position, differing only in spline handle lengths. Candidate A has the lowest drag at 0° but the highest yaw-weighted drag. Below zero, the rim's side force has a forward component and net drag becomes negative.</figcaption>
+      </figure>
+      <p style="font-size:14px;color:var(--ink-3)">All drag values are shown relative to a reference profile. Absolute values and candidate geometries are proprietary to Princeton Carbon Works.</p>
 
       <h2 id="outcomes">Outcomes</h2>
       <ul>
         <li>Delivered a ranked set of candidate profiles and a summary of parameter sensitivities to the engineering team.</li>
         <li>Recommended testing shoulder handle lengths below the current minimum, subject to structural limits.</li>
-        <li>Recommended CFD runs with trispoke wheels installed, as no trispoke data existed for the candidates.</li>
       </ul>
     </article>
   </div>
@@ -185,5 +328,21 @@
   </div>
 </footer>
 <script src="../js/main.js"></script>
+<script>
+(function () {
+  var v = document.querySelector('[data-yaw-viewer]'); if (!v) return;
+  var imgs = v.querySelectorAll('.yaw-stage img'), btns = v.querySelectorAll('.yaw-btns button'), i = 0, timer = null;
+  function show(n) { i = n; imgs.forEach(function (im, k) { im.classList.toggle('on', k === n); }); btns.forEach(function (b, k) { b.setAttribute('aria-pressed', k === n ? 'true' : 'false'); }); }
+  btns.forEach(function (b, k) { b.addEventListener('click', function () { clearInterval(timer); timer = null; show(k); }); });
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { es.forEach(function (e) {
+      if (e.isIntersecting && timer === null && !v.dataset.stopped) { timer = setInterval(function () { show((i + 1) % imgs.length); }, 1600); }
+      else if (!e.isIntersecting && timer) { clearInterval(timer); timer = null; }
+    }); }, { threshold: 0.4 }).observe(v);
+    btns.forEach(function (b) { b.addEventListener('click', function () { v.dataset.stopped = '1'; }); });
+  }
+})();
+</script>
 </body>
 </html>
