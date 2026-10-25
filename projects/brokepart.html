@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BrokePart | Maximilian Purcea</title>
+  <meta name="description" content="Mobile application that identifies broken or missing components from a photograph and provides repair or replacement options.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BrokePart | Maximilian Purcea">
+  <meta property="og:description" content="Mobile application that identifies broken or missing components from a photograph and provides repair or replacement options.">
+  <meta property="og:url" content="https://maxpurcea.github.io/projects/brokepart.html">
+  <meta property="og:image" content="https://maxpurcea.github.io/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Primary">
+    <a class="brand" href="../index.html"><span class="brand-mark">MP</span><span>Maximilian Purcea</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#rowing">Rowing</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#resume">Resume</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="container case-solo">
+  <a class="back" href="../index.html#projects">← All projects</a>
+
+  <section class="case-hero">
+    <span class="eyebrow">Independent project · Mobile application · 2026</span>
+    <h1>BrokePart</h1>
+    <p class="lede">A mobile application that identifies a broken, faulty, or missing component of a tool or appliance from a photograph, then restores it to working order through repair instructions, replacement-part sourcing, or a custom 3D-printed part.</p>
+  </section>
+
+  <div class="summary">
+    <div><span class="mono">Objective</span><p>Allow a non-specialist user to identify a broken or missing component from a photograph and restore the item to working order.</p></div>
+    <div><span class="mono">Contribution</span><p>Product design and application development, built in Expo for iOS and Android.</p></div>
+    <div><span class="mono">Current stage</span><p>First version in development, beginning with the photograph-to-diagnosis workflow.</p></div>
+  </div>
+
+  <figure class="case-cover">
+    <img src="../img/brokepart-cover.jpg" alt="Parts of a disassembled desk fan laid out beside hand tools" width="1800" height="1403">
+    <figcaption>Photo: Kat, via Unsplash.</figcaption>
+  </figure>
+
+  <article class="prose">
+    <h2>User flow</h2>
+    <ol class="plain-ol">
+      <li>The user submits a photograph and a short description of the problem.</li>
+      <li>The application identifies the system and the likely broken, faulty, or missing component.</li>
+      <li>Where practical, step-by-step repair instructions are provided.</li>
+      <li>Otherwise, affordable and reliable replacement parts are listed, with the reasoning for each.</li>
+      <li>Where no replacement exists, the user can request a CAD model and a 3D-printed part.</li>
+      <li>Instructions cover fitting the part and returning the item to normal use.</li>
+    </ol>
+
+    <h2>Design decisions</h2>
+    <ul>
+      <li>Expo (React Native) was chosen so that one codebase supports both iOS and Android.</li>
+      <li>The application is designed for non-specialist users, with plain-language instructions and as few steps as possible.</li>
+    </ul>
+
+    <h2>Next steps</h2>
+    <ul>
+      <li>Complete the photograph-to-diagnosis workflow.</li>
+      <li>Test with real broken items and measure diagnostic accuracy.</li>
+      <li>Add part sourcing and a request form for custom printed parts.</li>
+    </ul>
+  </article>
+
+  <nav class="next-prev" aria-label="More projects">
+    <a href="drawings-and-hangers.html"><span class="mono">← Previous</span><b>GD&amp;T Drawings and Hanger Replicas</b></a>
+    <a href="rim-aerodynamics.html"><span class="mono">Next →</span><b>Parametric Rim Aerodynamics</b></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-contact">
+      <span class="mono">Contact</span>
+      <a href="mailto:mp2284@cornell.edu">mp2284@cornell.edu</a>
+      <span class="sep" aria-hidden="true">·</span>
+      <a href="https://www.linkedin.com/in/maximilianpurcea" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="footer-meta">
+      <span>© <span id="yr">2026</span> Maximilian Purcea</span>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

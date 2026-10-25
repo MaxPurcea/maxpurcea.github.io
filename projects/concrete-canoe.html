@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cornell Concrete Canoe | Maximilian Purcea</title>
+  <meta name="description" content="Mold sub-team work with Cornell Concrete Canoe: in-house hot-wire fabrication of the 2026 canoe mold, and hull CFD and reusable mold development for 2026–27.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cornell Concrete Canoe | Maximilian Purcea">
+  <meta property="og:description" content="Mold sub-team work with Cornell Concrete Canoe: in-house hot-wire fabrication of the 2026 canoe mold, and hull CFD and reusable mold development for 2026–27.">
+  <meta property="og:url" content="https://maxpurcea.github.io/projects/concrete-canoe.html">
+  <meta property="og:image" content="https://maxpurcea.github.io/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Primary">
+    <a class="brand" href="../index.html"><span class="brand-mark">MP</span><span>Maximilian Purcea</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#rowing">Rowing</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#resume">Resume</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="container case-solo">
+  <a class="back" href="../index.html#projects">← All projects</a>
+
+  <section class="case-hero">
+    <span class="eyebrow">Cornell Concrete Canoe · Mold Sub-Team · 2025–Present</span>
+    <h1>Cornell Concrete Canoe</h1>
+ </section>
+
+  <div class="summary">
+    <div><span class="mono">Objective</span><p>Fabricate the mold for a 21 ft tumblehome hull in-house, in a form that can be removed after casting without being destroyed.</p></div>
+    <div><span class="mono">Contribution</span><p>Hot-wire cutting of mold sections, casting, and demolding for ARGO (2025–26). Hull CFD in ANSYS Fluent and reusable mold development for the 2026–27 canoe.</p></div>
+    <div><span class="mono">Result</span><p>About three weeks and several thousand dollars saved compared with outsourced CNC machining. The canoe was demolded with the mold intact, and most of the foam can be reused.</p></div>
+  </div>
+
+  <figure class="case-cover glide">
+    <img src="../img/canoe-hero.jpg" alt="Two paddlers racing ARGO, Cornell's concrete canoe" width="1700" height="956">
+    <figcaption><b>Figure 1.</b> ARGO racing at the 2026 ASCE Upstate New York Student Symposium.</figcaption>
+  </figure>
+
+  <article class="prose">
+    <h2>Results</h2>
+    <p>Building the mold in-house took about three fewer weeks and several thousand dollars less than outsourced CNC machining. Dimensional accuracy was slightly lower than a machined mold, and the difference was corrected by hand-sanding. Because the center sections were split for removal, the canoe was demolded without destroying the mold, and most of the foam can be reused.</p>
+    <p>ARGO's calculated midship freeboard under a four-paddler load was about 7.3 in, above the 6 in requirement, and the FEA result agreed closely. The team competed at the 2026 ASCE Upstate New York Student Symposium at RIT, April 9–11, 2026.</p>
+
+    <figure class="glide center-fig">
+      <img src="../img/canoe-display2.jpg" alt="ARGO on display stands at the competition" loading="lazy">
+      <figcaption><b>Figure 2.</b> ARGO on display at the 2026 competition.</figcaption>
+    </figure>
+
+    <h2>The challenge</h2>
+    <p>ARGO uses a tumblehome hull, in which the sides curve inward above the waterline. The shape improves paddler reach and stability, but it makes the hull wider at its base than at the gunwales, so a one-piece mold cannot be pulled out after casting. In previous seasons, concrete shrinkage during curing meant the mold had to be destroyed to remove it. ARGO was also the largest hull the team had built, and the goal was to avoid the cost of outsourced CNC machining entirely.</p>
+
+    <table class="spec">
+      <caption><b>Table 1.</b> ARGO hull specifications.</caption>
+      <tbody>
+        <tr><th>Hull form</th><td>Tumblehome</td></tr>
+        <tr><th>Length</th><td>21 ft (252 in)</td></tr>
+        <tr><th>Maximum beam</th><td>32 in</td></tr>
+        <tr><th>Wall thickness</th><td>5/8 in, cast in two layers</td></tr>
+        <tr><th>Reinforcement</th><td>SpiderLath fiberglass mesh</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Mold fabrication</h2>
+    <ol class="plain-ol">
+      <li>Hull cross-sections were exported from Fusion 360 at 12 in intervals, keeping the offset from the gunwale line to the stern axis so the hull could be cast directly on the mold. A 5/8 in edge was added to each section to serve as a wall-thickness guide.</li>
+      <li>Each section was laser cut from 1/4 in plywood, which holds up to the heat of the cutting wire.</li>
+      <li>Insulation-foam boards were glued into 12 in blocks. Templates were fixed to both faces of each block and traced with the hot-wire cutter, producing a lofted section between adjacent stations.</li>
+      <li>The 32 in end caps were rough-cut from Styrofoam with the hot wire and hand-sanded to final shape. They remain inside the canoe after casting.</li>
+      <li>Sections were fixed to the casting table with two diagonal dowels in 3D-printed holders. Gaps were filled with spray foam and sanded smooth, and the mold was wrapped in a stretch-fabric release layer.</li>
+    </ol>
+
+    <div class="gallery lettered glide">
+      <figure><img src="../img/canoe-templates.jpg" alt="Laser-cut plywood cross-section templates on glued foam stacks" loading="lazy"></figure>
+      <figure><img src="../img/canoe-cutting.jpg" alt="Team fixing cross-section templates to foam blocks" loading="lazy"></figure>
+      <figure><img src="../img/canoe-endcap-shaping.jpg" alt="Hot-wire cutting a Styrofoam end cap" loading="lazy" style="object-position:50% 35%"></figure>
+      <figure><img src="../img/canoe-sanding.jpg" alt="Foam cross sections assembled on the casting table" loading="lazy"></figure>
+    </div>
+    <p class="fig-note"><b>Figure 3.</b> Mold fabrication: (a) laser-cut cross-section templates for the foam, (b) assembling the templates onto foam blocks, (c) hot-wire cutting an end cap, (d) foam cross sections assembled on the casting table.</p>
+    <figure class="glide">
+      <img src="../img/canoe-mold-tent.jpg" alt="Assembled foam mold, before casting, on the casting table with spray-foam seams and a Styrofoam end cap" loading="lazy" class="tall">
+      <figcaption><b>Figure 4.</b> The assembled foam mold on the casting table inside the hydration tent, before casting: fifteen 12 in foam sections, two 4 in connectors, and Styrofoam end caps.</figcaption>
+    </figure>
+
+    <h2>Demolding design</h2>
+    <p>The four center sections, called the "Core Four," have the largest overhang. Each was given an additional T-shaped cut that splits it into three pieces. During demolding the center piece comes out first, which lets the two side pieces move inward and slide free. The remaining sections are then moved toward the center and removed one at a time, so the canoe comes off without destroying the mold.</p>
+
+    <figure class="mpl-fig glide">
+      <svg class="mplfig sketch" viewBox="0 0 640 250" role="img" aria-label="Core Four mold section with a T-shaped cut, and the removal sequence">
+        <defs><marker id="cc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#222"/></marker></defs>
+        <g font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#222">
+          <text x="70" y="22">(a)</text>
+          <path d="M82 200 C72 182 68 155 70 125 C72 62 110 30 160 30 L240 30 C290 30 328 62 330 125 C332 155 328 182 318 200 Z" fill="#ececec" stroke="#222" stroke-width="1.5"/>
+          <path d="M175 200 V95 M225 200 V95 M125 95 H275" fill="none" stroke="#1f4e8c" stroke-width="2" stroke-dasharray="6 3"/>
+          <line x1="40" y1="200" x2="360" y2="200" stroke="#222" stroke-width="1"/>
+          <text x="200" y="232" text-anchor="middle">Core Four section with T-cut</text>
+          <text x="282" y="99" fill="#1f4e8c" font-size="11">cut</text>
+          <g transform="translate(360 0)">
+            <text x="40" y="22">(b)</text>
+            <path d="M72 200 C62 182 58 155 60 125 C62 62 100 30 150 30 L160 30 L160 95 H115 V200 Z" fill="#ececec" stroke="#222" stroke-width="1.5"/>
+            <path d="M170 30 L180 30 C230 30 268 62 270 125 C272 155 268 182 258 200 L215 200 L215 95 H170 Z" fill="#ececec" stroke="#222" stroke-width="1.5"/>
+            <line x1="30" y1="200" x2="290" y2="200" stroke="#222" stroke-width="1"/>
+            <path d="M165 196 V150" stroke="#1f4e8c" stroke-width="1.6" marker-end="url(#cc-arrow)"/>
+            <path d="M90 150 h22" stroke="#222" stroke-width="1.4" marker-end="url(#cc-arrow)"/>
+            <path d="M240 150 h-22" stroke="#222" stroke-width="1.4" marker-end="url(#cc-arrow)"/>
+            <text x="165" y="232" text-anchor="middle">Center piece out, sides fold in</text>
+          </g>
+        </g>
+      </svg>
+      <figcaption><b>Figure 5.</b> Core Four section with the T-shaped cut (a), and the removal sequence (b). The sides tuck in toward the gunwales, following the tumblehome hull. Schematic, not to scale.</figcaption>
+    </figure>
+
+    <h2>Casting and curing</h2>
+    <p>ARGO was cast on January 24, 2026, on schedule, with concrete placed by hand at about two batches every ten minutes.</p>
+    <ul>
+      <li>A 3/8 in first layer was placed starting four feet from the bow and working in both directions, with 3/8 in rubber straps at 12 in intervals as thickness references.</li>
+      <li>SpiderLath fiberglass mesh was laid in 24 in sections with 2 in overlaps.</li>
+      <li>A 1/4 in second layer was checked with marked gauges in each 4 in square, then floated to reduce sanding.</li>
+      <li>The hull was wrapped in plastic inside the hydration tent and held above 85% relative humidity for three weeks.</li>
+    </ul>
+
+    <div class="gallery glide">
+      <figure><img src="../img/canoe-fabric.jpg" alt="Applying the fabric release layer to the foam mold" loading="lazy"></figure>
+      <figure><img src="../img/canoe-cast.jpg" alt="Cast hull wrapped in plastic for curing" loading="lazy"></figure>
+    </div>
+    <p class="fig-note"><b>Figure 6.</b> Applying the fabric release layer (left) and the cast hull wrapped for curing (right).</p>
+
+    <h2>2026–27 canoe</h2>
+    <ul>
+      <li>CFD in ANSYS Fluent is being used to compare revisions of the roughly 20 ft hull before the geometry is finalized.</li>
+      <li>A reusable foam mold process is in development, meant to survive practice casts and the final cast with tighter tolerances and less repair between pours.</li>
+      <li>Mix sub-team test results, revised competition rules including a thinner wall, and machining limits are being built into the hull and mold revisions.</li>
+      <li>A larger hot-wire cutter and 3D-printed depth gauges for casting are being built.</li>
+    </ul>
+
+    <figure class="glide">
+      <img src="../img/canoe-cad.jpg" alt="Fusion 360 model of the canoe hull" loading="lazy" style="background:#fff">
+      <figcaption><b>Figure 7.</b> Hull model in Fusion 360.</figcaption>
+    </figure>
+  </article>
+
+  <nav class="next-prev" aria-label="More projects">
+    <a href="rim-aerodynamics.html"><span class="mono">← Previous</span><b>Parametric Rim Aerodynamics</b></a>
+    <a href="drawings-and-hangers.html"><span class="mono">Next →</span><b>GD&amp;T Drawings and Hanger Replicas</b></a>
+  </nav>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-contact">
+      <span class="mono">Contact</span>
+      <a href="mailto:mp2284@cornell.edu">mp2284@cornell.edu</a>
+      <span class="sep" aria-hidden="true">·</span>
+      <a href="https://www.linkedin.com/in/maximilianpurcea" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="footer-meta">
+      <span>© <span id="yr">2026</span> Maximilian Purcea</span>
+    </div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+(function () {
+  var g = document.querySelectorAll('.glide');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+    g.forEach(function (el) { io.observe(el); });
+  } else { g.forEach(function (el) { el.classList.add('in'); }); }
+})();
+</script>
+</body>
+</html>
