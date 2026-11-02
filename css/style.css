@@ -620,5 +620,5 @@ figcaption b { font-weight: 600; color: var(--ink-2); }
 .prose figure.center-fig figcaption { text-align: center; }
 .gallery.lettered img { aspect-ratio: 4 / 3; }
 
-.resume-dl { margin-top: 8px; }
+.resume-dl { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 12px; }
 .resume-dl .btn { display: inline-flex; width: auto; }
