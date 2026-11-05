@@ -25,11 +25,10 @@ framework, build step or third-party JS library.
   from the portrait's actual on-screen position and redraws on resize, so the flow wraps the photo on phone,
   tablet and desktop alike. A few lines carry a slow moving dash, like particles in the flow. The whole set is a
   few dozen SVG paths and costs well under 1 ms to compute.
-- **Viewfinder crop marks** around the portrait (thin accent corner brackets that settle in on load), in
-  keeping with the original drafting-sheet idea, replacing a plain photo edge.
 - **Flow on the Fluid-Mechanical Dissection card**: on hover, the streamlines in its illustration start
   moving as dashed flow.
-- **Images fade in** as they finish loading, so lazy-loaded photos never pop in.
+- **Images fade in** as they finish loading, so lazy-loaded photos never pop in. If a download fails
+  (flaky connection, stale cache), the image retries once with a fresh URL instead of showing a broken icon.
 - **Drafting-style eyebrow mark**: a small outlined square, as on the original site.
 - **Reading-progress hairline** under the header on case studies (CSS scroll-driven animation, no JS).
 - **Theme-aware scrollbar** color.
@@ -45,7 +44,7 @@ framework, build step or third-party JS library.
 - **Hero**: before, a static name, lede and photo. Now:
   - The eyebrow, name, lede, button, portrait and fact cards come in with a short stagger.
   - The name gets one subtle tonal sheen as it loads.
-  - Streamlines flow around the portrait (above), with a very soft single-tone glow behind.
+  - Streamlines flow around the rounded portrait (above), with a very soft single-tone glow behind.
   - The three fact items are separate cards with a thin accent edge, instead of one boxed row.
 - **Section headings**: larger Space Grotesk headings with a short 2px accent rule underneath. "About Me" used
   an inline style; it now uses the shared `section-title` class.
@@ -70,6 +69,11 @@ framework, build step or third-party JS library.
   chart draw-in animations still work.
 - **Rim aerodynamics**: the yaw selector is now a segmented pill control, and the angle tag is easier to read.
 - **Next/previous** links are cards that lift, with an accent underline that grows on hover.
+
+## Fixes from review
+- The skiing photo showed as broken in one browser even though the file is valid and loads elsewhere (likely
+  a failed or stale cached download). Its URL now carries a version (`life-skiing-2.jpg?v=2`) to bypass stale
+  caches, and every image retries once on error (above).
 
 ## Layout fixes found while checking each page
 Each page was checked at 320, 390, 820, 1024, 1440 and 1920px wide in both light and dark themes (72 page

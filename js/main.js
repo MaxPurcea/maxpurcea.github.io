@@ -82,12 +82,21 @@
     var pImg = flowBody.querySelector('img'); if (pImg && !pImg.complete) pImg.addEventListener('load', queue, { once: true });
   }
 
-  // Images fade in as they finish loading (skips ones already cached, and the yaw viewer's crossfade)
+  // Images fade in as they finish loading. If a download fails (flaky network, stale cache),
+  // retry once with a fresh URL before giving up, so a photo never stays broken.
   document.querySelectorAll('main img').forEach(function (img) {
-    if ((img.complete && img.naturalWidth) || img.closest('.yaw-stage')) return;
-    img.classList.add('img-fade');
-    var done = function () { img.classList.add('is-loaded'); };
-    img.addEventListener('load', done, { once: true }); img.addEventListener('error', done, { once: true });
+    var src = img.getAttribute('src'); if (!src) return;
+    var retry = function () {
+      if (img.dataset.retried) { img.classList.add('is-loaded'); return; }
+      img.dataset.retried = '1';
+      img.src = src + (src.indexOf('?') < 0 ? '?' : '&') + 'retry=' + Date.now();
+    };
+    var fade = !img.closest('.yaw-stage');
+    if (img.complete && img.naturalWidth) return;          // already shown
+    if (fade) img.classList.add('img-fade');
+    img.addEventListener('load', function () { img.classList.add('is-loaded'); });
+    img.addEventListener('error', retry);
+    if (img.complete && !img.naturalWidth && img.loading !== 'lazy') retry(); // failed before this ran
   });
 
   // Fade videos in once they can play, so nothing pops
