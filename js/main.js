@@ -45,6 +45,51 @@
     els.forEach(function (el) { el.classList.add('in'); });
   }
 
+  // Hero streamlines: potential flow past a cylinder (psi = y(1 - R^2/r^2)), stretched into an
+  // ellipse around the portrait and recomputed from its real position, so lines bend around it at any size.
+  var flowSvg = document.querySelector('.hero-flow');
+  var flowBody = document.querySelector('.hero .portrait');
+  if (flowSvg && flowBody) {
+    var hero = flowSvg.parentElement, raf = 0;
+    var solve = function (xs, c) { // smallest y > body surface with y - y/(x^2+y^2) = c
+      var lo = xs * xs < 1 ? Math.sqrt(1 - xs * xs) : 0, hi = c + 2, mid;
+      for (var it = 0; it < 26; it++) { mid = (lo + hi) / 2; if (mid - mid / (xs * xs + mid * mid) < c) lo = mid; else hi = mid; }
+      return (lo + hi) / 2;
+    };
+    var drawFlow = function () {
+      raf = 0;
+      var W = hero.clientWidth, H = hero.clientHeight; if (!W || !H) return;
+      var hr = hero.getBoundingClientRect(), br = flowBody.getBoundingClientRect();
+      var cx = br.left - hr.left + br.width / 2, cy = br.top - hr.top + br.height / 2;
+      var ax = br.width * 0.6, ay = br.height * 0.58;         // ellipse hugging the portrait
+      var gap = W < 700 ? 30 : 44, step = W < 700 ? 12 : 20, out = '';
+      var nUp = Math.ceil(cy / gap) + 1, nDn = Math.ceil((H - cy) / gap) + 1;
+      for (var j = -nUp; j < nDn; j++) {
+        var Y0 = cy + (j + 0.5) * gap, c = Math.abs(Y0 - cy) / ay, sg = Y0 < cy ? -1 : 1, d = '';
+        for (var x = -step; x <= W + step; x += step) {
+          var y = solve((x - cx) / ax, c);
+          d += (d ? ' ' : 'M') + x + ' ' + (cy + sg * y * ay).toFixed(1);
+        }
+        var aj = Math.abs(j + 0.5), pulse = aj === 1.5 || aj === 3.5 || aj === 6.5;
+        out += '<path' + (pulse ? ' class="pulse" pathLength="1000"' : '') + ' d="' + d + '"/>';
+      }
+      flowSvg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      flowSvg.innerHTML = out;
+    };
+    var queue = function () { if (!raf) raf = requestAnimationFrame(drawFlow); };
+    drawFlow();
+    if ('ResizeObserver' in window) new ResizeObserver(queue).observe(hero); else window.addEventListener('resize', queue);
+    var pImg = flowBody.querySelector('img'); if (pImg && !pImg.complete) pImg.addEventListener('load', queue, { once: true });
+  }
+
+  // Images fade in as they finish loading (skips ones already cached, and the yaw viewer's crossfade)
+  document.querySelectorAll('main img').forEach(function (img) {
+    if ((img.complete && img.naturalWidth) || img.closest('.yaw-stage')) return;
+    img.classList.add('img-fade');
+    var done = function () { img.classList.add('is-loaded'); };
+    img.addEventListener('load', done, { once: true }); img.addEventListener('error', done, { once: true });
+  });
+
   // Fade videos in once they can play, so nothing pops
   document.querySelectorAll('.glide video').forEach(function (v) {
     function ready() { v.classList.add('ready'); }
